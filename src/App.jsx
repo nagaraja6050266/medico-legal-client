@@ -13,6 +13,7 @@ import SignUp from "./components/Login/SignUp";
 import SignIn from "./components/Login/SignIn";
 import Search from "./components/Search/Search";
 import Enrollment from "./components/Enrollment"; // Import Enrollment component
+import PatientList from "./components/PatientList"; // Import PatientList component
 
 function App() {
     const [count, setCount] = useState(0);
@@ -39,6 +40,8 @@ function AppContent() {
                     <Route path="/search" element={<Search />} />
                     <Route path="/enrollment" element={<Enrollment />} />{" "}
                     {/* Add Enrollment route */}
+                    <Route path="/patients" element={<PatientList />} />{" "}
+                    {/* Add PatientList route */}
                 </Routes>
             </div>
         </div>
