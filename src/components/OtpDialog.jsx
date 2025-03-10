@@ -12,10 +12,7 @@ function OtpDialog({ onClose }) {
     };
 
     return (
-        <div
-            className="modal"
-            style={{ display: "block" }}
-        >
+        <div className="modal" style={{ display: "block" }}>
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -24,27 +21,42 @@ function OtpDialog({ onClose }) {
                             type="button"
                             className="close"
                             onClick={onClose}
+                            style={{ backgroundColor: "transparent" }}
                         >
-                            <span>&times;</span>
+                            <span style={{ color: "black" }}>&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
                         <form onSubmit={handleOtpSubmit}>
-                            <div className="form-group">
-                                <label htmlFor="otp">OTP</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="otp"
-                                    value={otp}
-                                    onChange={(e) => setOtp(e.target.value)}
-                                    maxLength="6"
-                                    required
-                                />
+                            <div className="form-group row">
+                                <label
+                                    htmlFor="otp"
+                                    className="col-sm-2 col-form-label"
+                                >
+                                    OTP
+                                </label>
+                                <div className="col-sm-10">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="otp"
+                                        value={otp}
+                                        onChange={(e) => setOtp(e.target.value)}
+                                        maxLength="6"
+                                        required
+                                    />
+                                </div>
                             </div>
-                            <button type="submit" className="btn btn-primary">
-                                Submit OTP
-                            </button>
+                            <div className="form-group row">
+                                <div className="col-sm-10 offset-sm-2">
+                                    <button
+                                        type="submit"
+                                        className="btn btn-primary"
+                                    >
+                                        Submit OTP
+                                    </button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
