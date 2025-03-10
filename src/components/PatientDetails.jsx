@@ -58,7 +58,10 @@ function PatientDetails() {
     return (
         <div className="container mt-5">
             <GenericTable header="Patient Details" data={[patientData]} />
-            <div className="d-flex justify-content-between align-items-center mt-3">
+            <div
+                className="d-flex justify-content-end align-items-center mt-3"
+                style={{ maxWidth: "300px", marginLeft: "auto", gap: "20px" }}
+            >
                 <select
                     className="form-control"
                     value={status}
@@ -72,6 +75,7 @@ function PatientDetails() {
                 <button
                     className="btn btn-primary ml-2"
                     onClick={handleSaveStatus}
+                    style={{width: "200px"}}
                 >
                     Save Status
                 </button>
