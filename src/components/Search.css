@@ -1,0 +1,12 @@
+.search-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.form-group.row {
+    margin-bottom: 1.5rem;
+}
+
+.col-form-label {
+    padding-right: 1.5rem;
+}

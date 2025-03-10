@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BirthCertificateSearch from "./BirthCertificateSearch";
+import "./Search.css"; // Import custom CSS
 
 function Search() {
     const [documentType, setDocumentType] = useState("");
 
     return (
-        <div className="container mt-4">
+        <div className="container mt-4 search-container">
             <h2>Search Documents</h2>
             <form className="p-4 border rounded shadow-sm bg-light">
                 <div className="form-group row">

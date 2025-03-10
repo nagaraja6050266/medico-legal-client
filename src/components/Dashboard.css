@@ -1,0 +1,25 @@
+.birth-record-entry {
+    display: flex;
+    align-items: center;
+    width: auto; /* Adjust width */
+}
+
+.birth-record-entry label {
+    margin-right: 10px;
+    color: #000;
+}
+
+.dashboard-title {
+    margin: 0;
+}
+
+.dashboard-background {
+    background-image: url("../assets/dashboard.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

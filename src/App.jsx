@@ -28,7 +28,7 @@ function AppContent() {
     const showNavBar = !["/signup", "/signin"].includes(location.pathname);
 
     return (
-        <div>
+        <div style={{width: "100hw", height: "100vh"}} className="m-0 p-0">
             {showNavBar && <NavBar />}
             <div className={showNavBar ? "container mt-4" : ""}>
                 <Routes>

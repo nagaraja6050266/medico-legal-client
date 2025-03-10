@@ -1,16 +1,18 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Auth.css"; // Import custom CSS
 
 function SignIn() {
     return (
-        <div className="container mt-4">
-            <h2>Sign In</h2>
-            <form className="p-4 border rounded shadow-sm bg-light">
-                <div className="form-group row">
-                    <label htmlFor="email" className="col-sm-2 col-form-label">
-                        Email address
-                    </label>
-                    <div className="col-sm-10">
+        <div className="auth-container" style={{width: "100vw", height: "100vh"}}>
+            <div className="auth-image">
+                <img src="../src/assets/signin.jpg" alt="Sign In" />
+            </div>
+            <div className="auth-form">
+                <h2>Sign In</h2>
+                <form>
+                    <div className="form-group">
+                        <label htmlFor="email">Email address</label>
                         <input
                             type="email"
                             className="form-control"
@@ -18,15 +20,8 @@ function SignIn() {
                             placeholder="Enter email"
                         />
                     </div>
-                </div>
-                <div className="form-group row">
-                    <label
-                        htmlFor="password"
-                        className="col-sm-2 col-form-label"
-                    >
-                        Password
-                    </label>
-                    <div className="col-sm-10">
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
                         <input
                             type="password"
                             className="form-control"
@@ -34,15 +29,11 @@ function SignIn() {
                             placeholder="Password"
                         />
                     </div>
-                </div>
-                <div className="form-group row mt-4">
-                    <div className="col-sm-10 offset-sm-2">
-                        <button type="submit" className="btn btn-primary">
-                            Sign In
-                        </button>
-                    </div>
-                </div>
-            </form>
+                    <button type="submit" className="btn btn-primary">
+                        Sign In
+                    </button>
+                </form>
+            </div>
         </div>
     );
 }

@@ -1,0 +1,22 @@
+.navbar-profile {
+    margin-left: auto;
+}
+
+.navbar {
+    background-color: #0d6efd !important;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand,
+.navbar .input-group-text {
+    color: white !important;
+}
+
+.navbar .form-control {
+    color: black;
+}
+
+.navbar-logo {
+    height: 35px; /* Increase the height */
+    margin-left: 10px;
+}

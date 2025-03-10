@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Search.css"; // Import custom CSS
 
 function BirthCertificateSearch() {
     const [rchid, setRchid] = useState("");
@@ -11,7 +12,7 @@ function BirthCertificateSearch() {
     const [captcha, setCaptcha] = useState("");
 
     return (
-        <div className="mt-4 p-4 border rounded shadow-sm bg-light">
+        <div className="mt-4 p-4 border rounded shadow-sm bg-light search-container">
             <div className="form-group row">
                 <label htmlFor="rchid" className="col-sm-2 col-form-label">
                     RCHID
