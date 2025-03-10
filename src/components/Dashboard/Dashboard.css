@@ -14,7 +14,7 @@
 }
 
 .dashboard-background {
-    background-image: url("../assets/dashboard.jpg");
+    background-image: url("../../assets/dashboard.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

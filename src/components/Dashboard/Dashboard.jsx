@@ -33,21 +33,6 @@ function Dashboard() {
                     </select>
                 </div>
             </div>
-            <div className="row mb-4">
-                <div className="col-md-6 text-right">
-                    <button
-                        className="btn btn-primary"
-                        onClick={() => navigate("/search")}
-                    >
-                        Search Document
-                    </button>
-                </div>
-                <div className="col-md-6 text-right">
-                    <button className="btn btn-primary">
-                        <FontAwesomeIcon icon={faPlus} /> Add Document
-                    </button>
-                </div>
-            </div>
             <div className="row">
                 <div className="col-md-4">
                     <div className="card text-center h-100">
