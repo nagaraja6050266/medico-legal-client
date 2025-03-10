@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import "./NavBar.css"; // Import custom CSS
-import logo from "../assets/logo.png"; // Import logo
+import logo from "../../assets/logo.png"; // Import logo
 
 function NavBar() {
     const navigate = useNavigate();

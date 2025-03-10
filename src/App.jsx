@@ -7,11 +7,11 @@ import {
 } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import NavBar from "./components/NavBar";
-import Dashboard from "./components/Dashboard";
-import SignUp from "./components/SignUp";
-import SignIn from "./components/SignIn";
-import Search from "./components/Search";
+import NavBar from "./components/Common/NavBar";
+import Dashboard from "./components/Dashboard/Dashboard";
+import SignUp from "./components/Login/SignUp";
+import SignIn from "./components/Login/SignIn";
+import Search from "./components/Search/Search";
 
 function App() {
     const [count, setCount] = useState(0);
