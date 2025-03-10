@@ -7,69 +7,106 @@ function SignUp() {
     return (
         <div className="container mt-4">
             <h2>Sign Up</h2>
-            <form>
-                <div className="form-group">
-                    <label htmlFor="hospitalName">Hospital Name</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="hospitalName"
-                        placeholder="Enter hospital name"
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="hospitalAddress">Hospital Address</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="hospitalAddress"
-                        placeholder="Enter hospital address"
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email">Email address</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        id="email"
-                        placeholder="Enter email"
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        id="password"
-                        placeholder="Password"
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="role">Role</label>
-                    <select
-                        className="form-control"
-                        id="role"
-                        value={role}
-                        onChange={(e) => setRole(e.target.value)}
+            <form className="p-4 border rounded shadow-sm bg-light">
+                <div className="form-group row">
+                    <label
+                        htmlFor="hospitalName"
+                        className="col-sm-2 col-form-label"
                     >
-                        <option value="">Select Role</option>
-                        <option value="doctor">Doctor</option>
-                        <option value="nurse">Nurse</option>
-                        <option value="admin">Admin</option>
-                    </select>
+                        Hospital Name
+                    </label>
+                    <div className="col-sm-10">
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="hospitalName"
+                            placeholder="Enter hospital name"
+                        />
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="name">Name</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="name"
-                        placeholder="Enter your name"
-                    />
+                <div className="form-group row">
+                    <label
+                        htmlFor="hospitalAddress"
+                        className="col-sm-2 col-form-label"
+                    >
+                        Hospital Address
+                    </label>
+                    <div className="col-sm-10">
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="hospitalAddress"
+                            placeholder="Enter hospital address"
+                        />
+                    </div>
                 </div>
-                <button type="submit" className="btn btn-primary">
-                    Sign Up
-                </button>
+                <div className="form-group row">
+                    <label htmlFor="email" className="col-sm-2 col-form-label">
+                        Email address
+                    </label>
+                    <div className="col-sm-10">
+                        <input
+                            type="email"
+                            className="form-control"
+                            id="email"
+                            placeholder="Enter email"
+                        />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label
+                        htmlFor="password"
+                        className="col-sm-2 col-form-label"
+                    >
+                        Password
+                    </label>
+                    <div className="col-sm-10">
+                        <input
+                            type="password"
+                            className="form-control"
+                            id="password"
+                            placeholder="Password"
+                        />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label htmlFor="role" className="col-sm-2 col-form-label">
+                        Role
+                    </label>
+                    <div className="col-sm-10">
+                        <select
+                            className="form-control"
+                            id="role"
+                            value={role}
+                            onChange={(e) => setRole(e.target.value)}
+                        >
+                            <option value="">Select Role</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="nurse">Nurse</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label htmlFor="name" className="col-sm-2 col-form-label">
+                        Name
+                    </label>
+                    <div className="col-sm-10">
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="name"
+                            placeholder="Enter your name"
+                        />
+                    </div>
+                </div>
+                <div className="form-group row mt-4">
+                    <div className="col-sm-10 offset-sm-2">
+                        <button type="submit" className="btn btn-primary">
+                            Sign Up
+                        </button>
+                    </div>
+                </div>
             </form>
         </div>
     );

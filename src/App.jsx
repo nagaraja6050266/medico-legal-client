@@ -11,6 +11,7 @@ import NavBar from "./components/NavBar";
 import Dashboard from "./components/Dashboard";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
+import Search from "./components/Search";
 
 function App() {
     const [count, setCount] = useState(0);
@@ -34,6 +35,7 @@ function AppContent() {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/signin" element={<SignIn />} />
+                    <Route path="/search" element={<Search />} />
                 </Routes>
             </div>
         </div>

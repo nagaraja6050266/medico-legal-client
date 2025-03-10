@@ -7,7 +7,7 @@ function SideNav() {
             <ul className="nav nav-pills flex-column">
                 <li className="nav-item">
                     <a className="nav-link" href="#dashboard">
-                        Dashboard
+                        Home
                     </a>
                 </li>
                 <li className="nav-item">
