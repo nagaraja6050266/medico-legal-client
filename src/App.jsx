@@ -30,7 +30,7 @@ function AppContent() {
     return (
         <div style={{width: "100hw", height: "100vh"}} className="m-0 p-0">
             {showNavBar && <NavBar />}
-            <div className={showNavBar ? "container mt-4" : ""}>
+            <div style={{marginTop: "60px"}}>
                 <Routes>
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/signup" element={<SignUp />} />

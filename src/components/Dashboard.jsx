@@ -18,7 +18,7 @@ function Dashboard() {
     };
 
     return (
-        <div className="container-fluid dashboard-background p-4" style={{height: "100vh", width: "100vw"}}>
+        <div className="container-fluid dashboard-background" style={{height: "100vh", width: "100vw"}}>
             <div className="d-flex justify-content-between align-items-center my-4">
                 <h1 className="dashboard-title">Dashboard</h1>
                 <div className="input-group birth-record-entry">
