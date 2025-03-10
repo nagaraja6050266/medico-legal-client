@@ -12,6 +12,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import SignUp from "./components/Login/SignUp";
 import SignIn from "./components/Login/SignIn";
 import Search from "./components/Search/Search";
+import Enrollment from "./components/Enrollment"; // Import Enrollment component
 
 function App() {
     const [count, setCount] = useState(0);
@@ -28,14 +29,16 @@ function AppContent() {
     const showNavBar = !["/signup", "/signin"].includes(location.pathname);
 
     return (
-        <div style={{width: "100hw", height: "100vh"}} className="m-0 p-0">
+        <div style={{ width: "100hw", height: "100vh" }} className="m-0 p-0">
             {showNavBar && <NavBar />}
-            <div style={{marginTop: showNavBar ? "60px" : "0"}}>
+            <div style={{ marginTop: showNavBar ? "60px" : "0" }}>
                 <Routes>
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/search" element={<Search />} />
+                    <Route path="/enrollment" element={<Enrollment />} />{" "}
+                    {/* Add Enrollment route */}
                 </Routes>
             </div>
         </div>
