@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import GenericTable from "./GenericTable";
 
 const patients = [
     { id: 1, name: "John Doe" },

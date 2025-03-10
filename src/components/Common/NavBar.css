@@ -1,5 +1,9 @@
 .navbar-profile {
     margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: center;
 }
 
 .navbar {

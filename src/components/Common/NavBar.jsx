@@ -9,6 +9,15 @@ import logo from "../../assets/logo.png"; // Import logo
 function NavBar() {
     const navigate = useNavigate();
 
+    const handleSelectChange = (event) => {
+        const value = event.target.value;
+        if (value === "entry") {
+            navigate("/birth-record-entry"); // Update navigation path
+        } else if (value === "search") {
+            navigate("/search");
+        }
+    };
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <Link className="navbar-brand" to="/">
@@ -45,6 +54,17 @@ function NavBar() {
                     </li>
                 </ul>
                 <div className="navbar-profile ml-auto">
+                <div className="input-group birth-record-entry">
+                    <label style={{color:"white"}} className="mr-2">Birth Record Entry:</label>
+                    <select
+                        className="form-control"
+                        onChange={handleSelectChange}
+                    >
+                        <option value="">Select Option</option>
+                        <option value="entry">New Entry</option>
+                        <option value="search">Search</option>
+                    </select>
+                </div>
                     <a className="nav-link" href="#">
                         <FontAwesomeIcon icon={faUser} /> Profile Name
                     </a>

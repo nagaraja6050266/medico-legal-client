@@ -12,7 +12,7 @@ function Enrollment() {
 
     return (
         <div className="container mt-5">
-            <h1 style={{textAlign:"left"}} className="m-2 my-3">Enrollment Form</h1>
+            <h1 style={{textAlign:"left", marginTop: "100px !important"}} className="m-2">Enrollment Form</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group row">
                     <label htmlFor="name" className="col-sm-2 col-form-label">

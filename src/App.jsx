@@ -14,6 +14,8 @@ import SignIn from "./components/Login/SignIn";
 import Search from "./components/Search/Search";
 import Enrollment from "./components/Enrollment"; // Import Enrollment component
 import PatientList from "./components/PatientList"; // Import PatientList component
+import BirthRecordEntry from "./components/BirthRecordEntry/BirthRecordEntry"; // Import BirthRecordEntry component
+import PatientDetails from "./components/PatientDetails"; // Import PatientDetails component
 
 function App() {
     const [count, setCount] = useState(0);
@@ -32,7 +34,7 @@ function AppContent() {
     return (
         <div style={{ width: "100hw", height: "100vh" }} className="m-0 p-0">
             {showNavBar && <NavBar />}
-            <div style={{ marginTop: showNavBar ? "60px" : "0" }}>
+            <div style={{ marginTop: showNavBar ? "100px" : "0" }}>
                 <Routes>
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/signup" element={<SignUp />} />
@@ -42,6 +44,16 @@ function AppContent() {
                     {/* Add Enrollment route */}
                     <Route path="/patients" element={<PatientList />} />{" "}
                     {/* Add PatientList route */}
+                    <Route
+                        path="/birth-record-entry"
+                        element={<BirthRecordEntry />}
+                    />{" "}
+                    {/* Add BirthRecordEntry route */}
+                    <Route
+                        path="/patients/:id"
+                        element={<PatientDetails />}
+                    />{" "}
+                    {/* Add PatientDetails route */}
                 </Routes>
             </div>
         </div>

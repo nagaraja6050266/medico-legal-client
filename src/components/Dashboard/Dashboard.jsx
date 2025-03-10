@@ -1,37 +1,27 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import GenericTable from "../GenericTable";
 import "./Dashboard.css"; // Import custom CSS
 
+const recentPatients = [
+    { id: 1, name: "John Doe" },
+    { id: 2, name: "Jane Smith" },
+    // Add more recent patients as needed
+];
+
 function Dashboard() {
-    const navigate = useNavigate();
-
-    const handleSelectChange = (event) => {
-        const value = event.target.value;
-        if (value === "entry") {
-            navigate("/entry");
-        } else if (value === "search") {
-            navigate("/search");
-        }
-    };
-
     return (
-        <div className="container-fluid dashboard-background" style={{height: "100vh", width: "100vw"}}>
-            <div className="d-flex justify-content-between align-items-center my-4">
+        <div
+            className="container-fluid dashboard-background"
+            style={{ height: "100vh", width: "100vw", marginTop: "-40px" }}
+        >
+            <br />
+            <br />
+            <div
+                className="d-flex justify-content-between align-items-center my-4"
+                style={{ marginTop: "100px !important" }}
+            >
                 <h1 className="dashboard-title">Dashboard</h1>
-                <div className="input-group birth-record-entry">
-                    <label className="mr-2">Birth Record Entry:</label>
-                    <select
-                        className="form-control"
-                        onChange={handleSelectChange}
-                    >
-                        <option value="">Select Option</option>
-                        <option value="entry">New Entry</option>
-                        <option value="search">Search</option>
-                    </select>
-                </div>
             </div>
             <div className="row">
                 <div className="col-md-4">
@@ -57,6 +47,38 @@ function Dashboard() {
                             <p className="card-text">50</p>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className="container mt-5">
+                <h2>Recently Added Patients</h2>
+                <div className="table-responsive">
+                    <table className="table table-bordered table-hover shadow-sm">
+                        <thead className="thead-light">
+                            <tr>
+                                <th scope="col" className="text-center">
+                                    ID
+                                </th>
+                                <th scope="col" className="text-center">
+                                    Name
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {recentPatients.map((patient) => (
+                                <tr
+                                    key={patient.id}
+                                    style={{ cursor: "default" }}
+                                >
+                                    <td className="text-center">
+                                        {patient.id}
+                                    </td>
+                                    <td className="text-center">
+                                        {patient.name}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
