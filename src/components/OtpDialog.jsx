@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 function OtpDialog({ onClose }) {
     const [otp, setOtp] = useState("");
+    const navigate = useNavigate();
 
     const handleOtpSubmit = (e) => {
         e.preventDefault();
         // Handle OTP submission logic here
         alert("OTP Submitted: " + otp);
         onClose();
+        navigate("/patients/1");
     };
 
     return (

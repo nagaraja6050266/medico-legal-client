@@ -57,7 +57,7 @@ function PatientDetails() {
 
     return (
         <div className="container mt-5">
-            <GenericTable header="Patient Details" data={[patientData]} />
+            <GenericTable subheader={"Patient ID: "+id} header={"Patient Details"} data={[patientData]} />
             <div
                 className="d-flex justify-content-end align-items-center mt-3"
                 style={{ maxWidth: "300px", marginLeft: "auto", gap: "20px" }}

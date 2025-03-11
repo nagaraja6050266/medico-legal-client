@@ -13,10 +13,11 @@ const labels = [
     "Status",
 ];
 
-function GenericTable({ header, data, onRowClick }) {
+function GenericTable({ header, data, onRowClick, subheader }) {
     return (
         <div className="container mt-5">
             <h2>{header}</h2>
+            <h3>{subheader}</h3>
             <div className="mt-4">
                 <table className="table table-bordered table-hover shadow-sm">
                     <tbody>
