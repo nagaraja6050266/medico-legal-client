@@ -115,21 +115,6 @@ function BirthCertificateSearch() {
                     />
                 </div>
             </div>
-            <div className="form-group row">
-                <label htmlFor="captcha" className="col-sm-2 col-form-label">
-                    Captcha
-                </label>
-                <div className="col-sm-10">
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="captcha"
-                        value={captcha}
-                        onChange={(e) => setCaptcha(e.target.value)}
-                        placeholder="Enter captcha"
-                    />
-                </div>
-            </div>
         </div>
     );
 }
