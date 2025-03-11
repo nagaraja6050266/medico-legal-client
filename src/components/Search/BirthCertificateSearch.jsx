@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Search.css"; // Import custom CSS
 
 function BirthCertificateSearch() {
-    const [rchid, setRchid] = useState("");
+    const [birthId, setBirthId] = useState("");
     const [gender, setGender] = useState("");
     const [district, setDistrict] = useState("");
     const [placeOfBirth, setPlaceOfBirth] = useState("");
@@ -12,19 +12,19 @@ function BirthCertificateSearch() {
     const [captcha, setCaptcha] = useState("");
 
     return (
-        <div className="mt-4 p-4 border rounded shadow-sm bg-light search-container">
+        <div className="my-4 p-4 border rounded shadow-sm bg-light search-container">
             <div className="form-group row">
-                <label htmlFor="rchid" className="col-sm-2 col-form-label">
-                    RCHID
+                <label htmlFor="birthId" className="col-sm-2 col-form-label">
+                    Birth ID
                 </label>
                 <div className="col-sm-10">
                     <input
                         type="text"
                         className="form-control"
-                        id="rchid"
-                        value={rchid}
-                        onChange={(e) => setRchid(e.target.value)}
-                        placeholder="Enter RCHID"
+                        id="birthId"
+                        value={birthId}
+                        onChange={(e) => setBirthId(e.target.value)}
+                        placeholder="Enter Birth ID"
                     />
                 </div>
             </div>

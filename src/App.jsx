@@ -32,7 +32,7 @@ function AppContent() {
     const showNavBar = !["/signup", "/signin"].includes(location.pathname);
 
     return (
-        <div style={{ width: "100hw", height: "100vh" }} className="m-0 p-0">
+        <div style={{ width: "100hw"}} className="m-0 p-0">
             {showNavBar && <NavBar />}
             <div style={{ marginTop: showNavBar ? "100px" : "0" }}>
                 <Routes>

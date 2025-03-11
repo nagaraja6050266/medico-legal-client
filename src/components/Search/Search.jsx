@@ -7,9 +7,9 @@ function Search() {
     const [documentType, setDocumentType] = useState("");
 
     return (
-        <div className="container mt-4 search-container">
+        <div className="container mt-4 search-container" style={{ height: "100%" }}>
             <h2>Search Documents</h2>
-            <form className="p-4 border rounded shadow-sm bg-light">
+            <div className="p-4 border rounded shadow-sm bg-light">
                 <div className="form-group row">
                     <label
                         htmlFor="documentType"
@@ -46,7 +46,7 @@ function Search() {
                         </button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     );
 }
