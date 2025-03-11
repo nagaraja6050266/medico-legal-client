@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function BirthRecordEntry() {
@@ -6,12 +7,13 @@ function BirthRecordEntry() {
         name: "",
         dob: "",
         gender: "",
-        placeOfBirth: "",
         motherName: "",
         fatherName: "",
         address: "",
         parentMobileNumber: "",
     });
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,8 +25,7 @@ function BirthRecordEntry() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission
-        console.log(formData);
+        navigate("/birth-record-details", { state: { formData } });
     };
 
     return (
@@ -71,20 +72,6 @@ function BirthRecordEntry() {
                             <option value="female">Female</option>
                             <option value="other">Other</option>
                         </select>
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">
-                        Place of Birth
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="placeOfBirth"
-                            value={formData.placeOfBirth}
-                            onChange={handleChange}
-                        />
                     </div>
                 </div>
                 <div className="form-group row">

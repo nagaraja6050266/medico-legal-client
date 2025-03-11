@@ -9,12 +9,14 @@ const recentPatients = [
         name: "John Doe",
         admissionDate: "2023-01-01",
         status: "Admitted",
+        weight: "3.5 kg",
     },
     {
         id: 2,
         name: "Jane Smith",
         admissionDate: "2023-02-01",
         status: "Discharged",
+        weight: "3.2 kg",
     },
     // Add more recent patients as needed
 ];
@@ -68,7 +70,15 @@ function Dashboard() {
                 </div>
             </div>
             <div className="container mt-5">
-                <h2 style={{width: "100%", textAlign: "left", marginLeft: "20px"}}>Recently Added Patients</h2>
+                <h2
+                    style={{
+                        width: "100%",
+                        textAlign: "left",
+                        marginLeft: "20px",
+                    }}
+                >
+                    Recently Added Patients
+                </h2>
                 <div className="table-responsive">
                     <table className="table table-bordered table-hover shadow-sm">
                         <thead className="thead-light">
@@ -84,6 +94,9 @@ function Dashboard() {
                                 </th>
                                 <th scope="col" className="text-left">
                                     Status
+                                </th>
+                                <th scope="col" className="text-left">
+                                    Weight
                                 </th>
                             </tr>
                         </thead>
@@ -102,6 +115,9 @@ function Dashboard() {
                                     </td>
                                     <td className="text-left">
                                         {patient.status}
+                                    </td>
+                                    <td className="text-left">
+                                        {patient.weight}
                                     </td>
                                 </tr>
                             ))}

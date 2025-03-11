@@ -38,14 +38,6 @@ function Search() {
                 {documentType === "birthCertificate" && (
                     <BirthCertificateSearch />
                 )}
-                {/* Add other document type components here */}
-                <div className="form-group row mt-4">
-                    <div className="col-sm-10 offset-sm-2">
-                        <button type="submit" className="btn btn-primary">
-                            Search
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     );

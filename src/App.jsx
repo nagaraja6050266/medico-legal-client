@@ -16,6 +16,7 @@ import Enrollment from "./components/Enrollment"; // Import Enrollment component
 import PatientList from "./components/PatientList"; // Import PatientList component
 import BirthRecordEntry from "./components/BirthRecordEntry/BirthRecordEntry"; // Import BirthRecordEntry component
 import PatientDetails from "./components/PatientDetails"; // Import PatientDetails component
+import BirthRecordDetails from "./components/BirthRecordDetails/BirthRecordDetails"; // Import BirthRecordDetails component
 
 function App() {
     const [count, setCount] = useState(0);
@@ -32,7 +33,7 @@ function AppContent() {
     const showNavBar = !["/signup", "/signin"].includes(location.pathname);
 
     return (
-        <div style={{ width: "100hw"}} className="m-0 p-0">
+        <div style={{ width: "100hw" }} className="m-0 p-0">
             {showNavBar && <NavBar />}
             <div style={{ marginTop: showNavBar ? "100px" : "0" }}>
                 <Routes>
@@ -54,6 +55,11 @@ function AppContent() {
                         element={<PatientDetails />}
                     />{" "}
                     {/* Add PatientDetails route */}
+                    <Route
+                        path="/birth-record-details"
+                        element={<BirthRecordDetails />}
+                    />{" "}
+                    {/* Add BirthRecordDetails route */}
                 </Routes>
             </div>
         </div>

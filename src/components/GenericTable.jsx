@@ -5,7 +5,6 @@ const labels = [
     "Name",
     "Date of Birth",
     "Gender",
-    "Place of Birth",
     "Mother's Name",
     "Father's Name",
     "Address",

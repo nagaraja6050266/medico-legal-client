@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import GenericTable from "./GenericTable";
+import Enrollment from "./Enrollment"; // Import Enrollment component
 
 const mockPatientData = {
     1: {
@@ -14,6 +15,7 @@ const mockPatientData = {
         address: "123 Main St",
         parentMobileNumber: "1234567890",
         status: "Admitted for delivery",
+        weight: "3.5 kg",
     },
     2: {
         name: "Jane Smith",
@@ -25,6 +27,7 @@ const mockPatientData = {
         address: "456 Elm St",
         parentMobileNumber: "0987654321",
         status: "Baby born",
+        weight: "3.2 kg",
     },
     // Add more mock data as needed
 };
@@ -33,6 +36,7 @@ function PatientDetails() {
     const { id } = useParams();
     const [patientData, setPatientData] = useState(null);
     const [status, setStatus] = useState("");
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         // Fetch patient data based on ID
@@ -51,35 +55,60 @@ function PatientDetails() {
         console.log("Status updated:", status);
     };
 
+    const handleEditClick = () => {
+        setIsEditing(true);
+    };
+
     if (!patientData) {
         return <div>Loading...</div>;
     }
 
     return (
         <div className="container mt-5">
-            <GenericTable subheader={"Patient ID: "+id} header={"Patient Details"} data={[patientData]} />
-            <div
-                className="d-flex justify-content-end align-items-center mt-3"
-                style={{ maxWidth: "300px", marginLeft: "auto", gap: "20px" }}
-            >
-                <select
-                    className="form-control"
-                    value={status}
-                    onChange={handleStatusChange}
-                >
-                    <option value="Admitted for delivery">
-                        Admitted for delivery
-                    </option>
-                    <option value="Baby born">Baby born</option>
-                </select>
-                <button
-                    className="btn btn-primary ml-2"
-                    onClick={handleSaveStatus}
-                    style={{width: "200px"}}
-                >
-                    Save Status
-                </button>
-            </div>
+            {isEditing ? (
+                <Enrollment header="Edit Details" patientData={patientData} />
+            ) : (
+                <>
+                    <GenericTable
+                        subheader={"Patient ID: " + id}
+                        header={"Patient Details"}
+                        data={[patientData]}
+                    />
+                    <div
+                        className="d-flex justify-content-end align-items-center mt-3"
+                        style={{
+                            maxWidth: "300px",
+                            marginLeft: "auto",
+                            gap: "20px",
+                        }}
+                    >
+                        <select
+                            className="form-control"
+                            value={status}
+                            onChange={handleStatusChange}
+                        >
+                            <option value="Admitted for delivery">
+                                Admitted for delivery
+                            </option>
+                            <option value="Baby born">Baby born</option>
+                        </select>
+                        <button
+                            className="btn btn-primary ml-2"
+                            onClick={handleSaveStatus}
+                            style={{ width: "200px" }}
+                        >
+                            Save Status
+                        </button>
+                        <button
+                            className="btn btn-secondary ml-2"
+                            onClick={handleEditClick}
+                            style={{ width: "200px" }}
+                        >
+                            Edit Details
+                        </button>
+                    </div>
+                </>
+            )}
         </div>
     );
 }

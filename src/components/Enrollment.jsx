@@ -1,9 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import OtpDialog from "./OtpDialog"; // Import OtpDialog component
 
-function Enrollment() {
+function Enrollment({ header = "Enrollment Form", patientData = {} }) {
     const [showOtpDialog, setShowOtpDialog] = useState(false);
+    const [formData, setFormData] = useState({
+        name: "",
+        gender: "",
+        parentName: "",
+        age: "",
+        weight: "",
+        phoneNumber: "",
+        ...patientData,
+    });
+
+    useEffect(() => {
+        setFormData({ ...formData, ...patientData });
+    }, [patientData]);
+
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setFormData({ ...formData, [id]: value });
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -16,7 +34,7 @@ function Enrollment() {
                 style={{ textAlign: "center", marginTop: "100px !important" }}
                 className="m-2"
             >
-                Enrollment Form
+                {header}
             </h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group row">
@@ -28,6 +46,8 @@ function Enrollment() {
                             type="text"
                             className="form-control"
                             id="name"
+                            value={formData.name}
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -37,7 +57,13 @@ function Enrollment() {
                         Gender
                     </label>
                     <div className="col-sm-10">
-                        <select className="form-control" id="gender" required>
+                        <select
+                            className="form-control"
+                            id="gender"
+                            value={formData.gender}
+                            onChange={handleChange}
+                            required
+                        >
                             <option value="">Select Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -57,6 +83,8 @@ function Enrollment() {
                             type="text"
                             className="form-control"
                             id="parentName"
+                            value={formData.parentName}
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -70,6 +98,23 @@ function Enrollment() {
                             type="number"
                             className="form-control"
                             id="age"
+                            value={formData.age}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label htmlFor="weight" className="col-sm-2 col-form-label">
+                        Weight
+                    </label>
+                    <div className="col-sm-10">
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="weight"
+                            value={formData.weight}
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -86,6 +131,8 @@ function Enrollment() {
                             type="tel"
                             className="form-control"
                             id="phoneNumber"
+                            value={formData.phoneNumber}
+                            onChange={handleChange}
                             required
                         />
                     </div>
