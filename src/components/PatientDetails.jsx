@@ -14,8 +14,6 @@ const mockPatientData = {
         fatherName: "John Smith",
         address: "123 Main St",
         parentMobileNumber: "1234567890",
-        status: "Admitted for delivery",
-        weight: "3.5 kg",
     },
     2: {
         name: "Jane Smith",
@@ -26,8 +24,6 @@ const mockPatientData = {
         fatherName: "John Smith",
         address: "456 Elm St",
         parentMobileNumber: "0987654321",
-        status: "Baby born",
-        weight: "3.2 kg",
     },
     // Add more mock data as needed
 };

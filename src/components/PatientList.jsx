@@ -8,22 +8,16 @@ const patients = [
         id: 1,
         name: "John Doe",
         admissionDate: "2023-01-01",
-        status: "Admitted",
-        weight: "3.5 kg",
     },
     {
         id: 2,
         name: "Jane Smith",
         admissionDate: "2023-02-01",
-        status: "Discharged",
-        weight: "3.2 kg",
     },
     {
         id: 3,
         name: "Alice Johnson",
         admissionDate: "2023-03-01",
-        status: "Admitted",
-        weight: "3.4 kg",
     },
     // Add more patients as needed
 ];
@@ -51,12 +45,6 @@ function PatientList() {
                             <th scope="col" className="text-left">
                                 Admission Date
                             </th>
-                            <th scope="col" className="text-left">
-                                Status
-                            </th>
-                            <th scope="col" className="text-left">
-                                Weight
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,8 +59,6 @@ function PatientList() {
                                 <td className="text-left">
                                     {patient.admissionDate}
                                 </td>
-                                <td className="text-left">{patient.status}</td>
-                                <td className="text-left">{patient.weight}</td>
                             </tr>
                         ))}
                     </tbody>

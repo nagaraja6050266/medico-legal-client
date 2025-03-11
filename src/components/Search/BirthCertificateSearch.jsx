@@ -6,7 +6,7 @@ import "./Search.css"; // Import custom CSS
 function BirthCertificateSearch() {
     const [birthId, setBirthId] = useState("");
     const [gender, setGender] = useState("");
-    const [district, setDistrict] = useState("");
+    const [name, setName] = useState("");
     const [placeOfBirth, setPlaceOfBirth] = useState("");
     const [dateOfBirth, setDateOfBirth] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
@@ -19,7 +19,7 @@ function BirthCertificateSearch() {
         const formData = {
             birthId,
             gender,
-            district,
+            district: name,
             placeOfBirth,
             dateOfBirth,
             mobileNumber,
@@ -70,22 +70,23 @@ function BirthCertificateSearch() {
                 </div>
                 <div className="form-group row">
                     <label
-                        htmlFor="district"
+                        htmlFor="name"
                         className="col-sm-2 col-form-label"
                     >
-                        District
+                        Name
                     </label>
                     <div className="col-sm-10">
                         <input
                             type="text"
                             className="form-control"
-                            id="district"
-                            value={district}
-                            onChange={(e) => setDistrict(e.target.value)}
+                            id="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             placeholder="Enter district"
                         />
                     </div>
                 </div>
+                
                 <div className="form-group row">
                     <label
                         htmlFor="dateOfBirth"

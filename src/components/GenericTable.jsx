@@ -5,11 +5,11 @@ const labels = [
     "Name",
     "Date of Birth",
     "Gender",
+    "Weight",
     "Mother's Name",
     "Father's Name",
     "Address",
     "Parent Mobile Number",
-    "Status",
 ];
 
 function GenericTable({ header, data, onRowClick, subheader }) {

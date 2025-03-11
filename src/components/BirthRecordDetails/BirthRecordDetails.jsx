@@ -19,6 +19,7 @@ function BirthRecordDetails() {
             name: formData.name || "N/A",
             dob: formData.dob || "N/A",
             gender: formData.gender || "N/A",
+            weight: formData.weight || "N/A",
             motherName: formData.motherName || "N/A",
             fatherName: formData.fatherName || "N/A",
             address: formData.address || "N/A",

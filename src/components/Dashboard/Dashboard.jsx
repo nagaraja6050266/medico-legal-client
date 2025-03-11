@@ -8,15 +8,11 @@ const recentPatients = [
         id: 1,
         name: "John Doe",
         admissionDate: "2023-01-01",
-        status: "Admitted",
-        weight: "3.5 kg",
     },
     {
         id: 2,
         name: "Jane Smith",
         admissionDate: "2023-02-01",
-        status: "Discharged",
-        weight: "3.2 kg",
     },
     // Add more recent patients as needed
 ];
@@ -92,12 +88,6 @@ function Dashboard() {
                                 <th scope="col" className="text-left">
                                     Admission Date
                                 </th>
-                                <th scope="col" className="text-left">
-                                    Status
-                                </th>
-                                <th scope="col" className="text-left">
-                                    Weight
-                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -112,12 +102,6 @@ function Dashboard() {
                                     </td>
                                     <td className="text-left">
                                         {patient.admissionDate}
-                                    </td>
-                                    <td className="text-left">
-                                        {patient.status}
-                                    </td>
-                                    <td className="text-left">
-                                        {patient.weight}
                                     </td>
                                 </tr>
                             ))}

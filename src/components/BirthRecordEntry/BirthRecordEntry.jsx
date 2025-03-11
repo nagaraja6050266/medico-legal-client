@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import OtpDialog from "../OtpDialog"; // Import OtpDialog component
 
 function BirthRecordEntry() {
     const [formData, setFormData] = useState({
@@ -11,8 +12,10 @@ function BirthRecordEntry() {
         fatherName: "",
         address: "",
         parentMobileNumber: "",
+        babyWeight: "", // Add babyWeight to formData
     });
 
+    const [showOtpDialog, setShowOtpDialog] = useState(false);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -25,6 +28,12 @@ function BirthRecordEntry() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setShowOtpDialog(true);
+    };
+
+    const handleOtpSubmit = (otp) => {
+        alert("OTP Submitted: " + otp);
+        setShowOtpDialog(false);
         navigate("/birth-record-details", { state: { formData } });
     };
 
@@ -129,6 +138,20 @@ function BirthRecordEntry() {
                     </div>
                 </div>
                 <div className="form-group row">
+                    <label className="col-sm-2 col-form-label">
+                        Baby Weight (kg)
+                    </label>
+                    <div className="col-sm-10">
+                        <input
+                            type="number"
+                            className="form-control"
+                            name="babyWeight"
+                            value={formData.babyWeight}
+                            onChange={handleChange}
+                        />
+                    </div>
+                </div>
+                <div className="form-group row">
                     <div className="col-sm-10 offset-sm-2">
                         <button type="submit" className="btn btn-primary">
                             Submit
@@ -136,6 +159,12 @@ function BirthRecordEntry() {
                     </div>
                 </div>
             </form>
+            {showOtpDialog && (
+                <OtpDialog
+                    onClose={() => setShowOtpDialog(false)}
+                    onOtpSubmit={handleOtpSubmit}
+                />
+            )}
         </div>
     );
 }

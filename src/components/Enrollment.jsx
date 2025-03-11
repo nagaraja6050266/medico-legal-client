@@ -9,7 +9,6 @@ function Enrollment({ header = "Enrollment Form", patientData = {} }) {
         gender: "",
         parentName: "",
         age: "",
-        weight: "",
         phoneNumber: "",
         ...patientData,
     });
@@ -26,6 +25,12 @@ function Enrollment({ header = "Enrollment Form", patientData = {} }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         setShowOtpDialog(true);
+    };
+
+    const handleOtpSubmit = (otp) => {
+        alert("OTP Submitted: " + otp);
+        setShowOtpDialog(false);
+        // Add your navigation or other logic here
     };
 
     return (
@@ -105,21 +110,6 @@ function Enrollment({ header = "Enrollment Form", patientData = {} }) {
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="weight" className="col-sm-2 col-form-label">
-                        Weight
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="weight"
-                            value={formData.weight}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
                     <label
                         htmlFor="phoneNumber"
                         className="col-sm-2 col-form-label"
@@ -142,7 +132,10 @@ function Enrollment({ header = "Enrollment Form", patientData = {} }) {
                 </button>
             </form>
             {showOtpDialog && (
-                <OtpDialog onClose={() => setShowOtpDialog(false)} />
+                <OtpDialog
+                    onClose={() => setShowOtpDialog(false)}
+                    onOtpSubmit={handleOtpSubmit}
+                />
             )}
         </div>
     );
