@@ -4,8 +4,18 @@ import GenericTable from "../GenericTable";
 import "./Dashboard.css"; // Import custom CSS
 
 const recentPatients = [
-    { id: 1, name: "John Doe" },
-    { id: 2, name: "Jane Smith" },
+    {
+        id: 1,
+        name: "John Doe",
+        admissionDate: "2023-01-01",
+        status: "Admitted",
+    },
+    {
+        id: 2,
+        name: "Jane Smith",
+        admissionDate: "2023-02-01",
+        status: "Discharged",
+    },
     // Add more recent patients as needed
 ];
 
@@ -23,8 +33,8 @@ function Dashboard() {
             >
                 <h1 className="dashboard-title">Dashboard</h1>
             </div>
-            <div className="row">
-                <div className="col-md-4">
+            <div className="row mx-5 px-5 gx-5 gy-4">
+                <div className="col-md-6 mb-4">
                     <div className="card text-center h-100">
                         <div className="card-body">
                             <h2 className="card-title">Total Inpatients</h2>
@@ -32,7 +42,7 @@ function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-6 mb-4">
                     <div className="card text-center h-100">
                         <div className="card-body">
                             <h2 className="card-title">Total Outpatients</h2>
@@ -40,7 +50,7 @@ function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-6 mb-4">
                     <div className="card text-center h-100">
                         <div className="card-body">
                             <h2 className="card-title">Total Birth Records</h2>
@@ -48,18 +58,32 @@ function Dashboard() {
                         </div>
                     </div>
                 </div>
+                <div className="col-md-6 mb-4">
+                    <div className="card text-center h-100">
+                        <div className="card-body">
+                            <h2 className="card-title">Average Birth Rate</h2>
+                            <p className="card-text">5%</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="container mt-5">
-                <h2>Recently Added Patients</h2>
+                <h2 style={{width: "100%", textAlign: "left", marginLeft: "20px"}}>Recently Added Patients</h2>
                 <div className="table-responsive">
                     <table className="table table-bordered table-hover shadow-sm">
                         <thead className="thead-light">
                             <tr>
-                                <th scope="col" className="text-center">
+                                <th scope="col" className="text-left">
                                     ID
                                 </th>
-                                <th scope="col" className="text-center">
+                                <th scope="col" className="text-left">
                                     Name
+                                </th>
+                                <th scope="col" className="text-left">
+                                    Admission Date
+                                </th>
+                                <th scope="col" className="text-left">
+                                    Status
                                 </th>
                             </tr>
                         </thead>
@@ -69,11 +93,15 @@ function Dashboard() {
                                     key={patient.id}
                                     style={{ cursor: "default" }}
                                 >
-                                    <td className="text-center">
-                                        {patient.id}
-                                    </td>
-                                    <td className="text-center">
+                                    <td className="text-left">{patient.id}</td>
+                                    <td className="text-left">
                                         {patient.name}
+                                    </td>
+                                    <td className="text-left">
+                                        {patient.admissionDate}
+                                    </td>
+                                    <td className="text-left">
+                                        {patient.status}
                                     </td>
                                 </tr>
                             ))}

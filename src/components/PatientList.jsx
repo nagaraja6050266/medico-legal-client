@@ -4,9 +4,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import GenericTable from "./GenericTable";
 
 const patients = [
-    { id: 1, name: "John Doe" },
-    { id: 2, name: "Jane Smith" },
-    { id: 3, name: "Alice Johnson" },
+    {
+        id: 1,
+        name: "John Doe",
+        admissionDate: "2023-01-01",
+        status: "Admitted",
+    },
+    {
+        id: 2,
+        name: "Jane Smith",
+        admissionDate: "2023-02-01",
+        status: "Discharged",
+    },
+    {
+        id: 3,
+        name: "Alice Johnson",
+        admissionDate: "2023-03-01",
+        status: "Admitted",
+    },
     // Add more patients as needed
 ];
 
@@ -24,11 +39,17 @@ function PatientList() {
                 <table className="table table-bordered table-hover shadow-sm">
                     <thead className="thead-light">
                         <tr>
-                            <th scope="col" className="text-center">
+                            <th scope="col" className="text-left">
                                 ID
                             </th>
-                            <th scope="col" className="text-center">
+                            <th scope="col" className="text-left">
                                 Name
+                            </th>
+                            <th scope="col" className="text-left">
+                                Admission Date
+                            </th>
+                            <th scope="col" className="text-left">
+                                Status
                             </th>
                         </tr>
                     </thead>
@@ -39,8 +60,12 @@ function PatientList() {
                                 onClick={() => handleRowClick(patient.id)}
                                 style={{ cursor: "pointer" }}
                             >
-                                <td className="text-center">{patient.id}</td>
-                                <td className="text-center">{patient.name}</td>
+                                <td className="text-left">{patient.id}</td>
+                                <td className="text-left">{patient.name}</td>
+                                <td className="text-left">
+                                    {patient.admissionDate}
+                                </td>
+                                <td className="text-left">{patient.status}</td>
                             </tr>
                         ))}
                     </tbody>
