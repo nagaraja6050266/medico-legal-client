@@ -1,43 +1,28 @@
-import { useState } from "react";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    useLocation,
-} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {
+    Route,
+    BrowserRouter as Router,
+    Routes
+} from "react-router-dom";
 import "./App.css";
-import NavBar from "./components/Common/NavBar";
-import Dashboard from "./components/Dashboard/Dashboard";
-import SignUp from "./components/Login/SignUp";
-import SignIn from "./components/Login/SignIn";
-import Search from "./components/Search/Search";
-import Enrollment from "./components/Enrollment"; // Import Enrollment component
-import PatientList from "./components/PatientList"; // Import PatientList component
-import BirthRecordEntry from "./components/BirthRecordEntry/BirthRecordEntry"; // Import BirthRecordEntry component
-import PatientDetails from "./components/PatientDetails"; // Import PatientDetails component
 import BirthRecordDetails from "./components/BirthRecordDetails/BirthRecordDetails"; // Import BirthRecordDetails component
+import BirthRecordEntry from "./components/BirthRecordEntry/BirthRecordEntry"; // Import BirthRecordEntry component
+import Dashboard from "./components/Dashboard/Dashboard";
+import Enrollment from "./components/Enrollment"; // Import Enrollment component
+import SignIn from "./components/Login/SignIn";
+import SignUp from "./components/Login/SignUp";
+import PatientDetails from "./components/PatientDetails"; // Import PatientDetails component
+import PatientList from "./components/PatientList"; // Import PatientList component
+import Search from "./components/Search/Search";
+import { Template } from "./components/Template";
 
 function App() {
-    const [count, setCount] = useState(0);
 
     return (
         <Router>
-            <AppContent />
-        </Router>
-    );
-}
-
-function AppContent() {
-    const location = useLocation();
-    const showNavBar = !["/signup", "/signin"].includes(location.pathname);
-
-    return (
-        <div style={{ width: "100hw" }} className="m-0 p-0">
-            {showNavBar && <NavBar />}
-            <div style={{ marginTop: showNavBar ? "100px" : "0" }}>
-                <Routes>
-                    <Route path="/dashboard" element={<Dashboard />} />
+            <Routes>
+                <Route element={<Template />}>
+                    <Route path="/" element={<Dashboard />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/search" element={<Search />} />
@@ -60,9 +45,9 @@ function AppContent() {
                         element={<BirthRecordDetails />}
                     />{" "}
                     {/* Add BirthRecordDetails route */}
-                </Routes>
-            </div>
-        </div>
+                </Route>
+            </Routes>
+        </Router>
     );
 }
 
