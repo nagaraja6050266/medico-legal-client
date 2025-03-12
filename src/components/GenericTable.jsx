@@ -2,14 +2,14 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const labels = [
-    "Name",
-    "Date of Birth",
-    "Gender",
-    "Weight",
-    "Mother's Name",
-    "Father's Name",
-    "Address",
-    "Parent Mobile Number",
+    { display: "Name", key: "name" },
+    { display: "Date of Birth", key: "dob" },
+    { display: "Gender", key: "gender" },
+    { display: "Place of Birth", key: "placeOfBirth" },
+    { display: "Mother's Name", key: "motherName" },
+    { display: "Father's Name", key: "fatherName" },
+    { display: "Address", key: "address" },
+    { display: "Parent Mobile Number", key: "parentMobileNumber" },
 ];
 
 function GenericTable({ header, data, onRowClick, subheader }) {
@@ -34,16 +34,8 @@ function GenericTable({ header, data, onRowClick, subheader }) {
                                                 : "default",
                                         }}
                                     >
-                                        <th scope="row">{label}</th>
-                                        <td>
-                                            {
-                                                item[
-                                                    label
-                                                        .toLowerCase()
-                                                        .replace(/ /g, "")
-                                                ]
-                                            }
-                                        </td>
+                                        <th scope="row">{label.display}</th>
+                                        <td>{item[label.key]}</td>
                                     </tr>
                                 ))}
                             </React.Fragment>
