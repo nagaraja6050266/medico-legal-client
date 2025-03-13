@@ -51,6 +51,21 @@ function BirthCertificateSearch() {
                 </div>
                 <p className="text-center">OR</p>
                 <div className="form-group row">
+                    <label htmlFor="name" className="col-sm-2 col-form-label">
+                        Name
+                    </label>
+                    <div className="col-sm-10">
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="Enter Name"
+                        />
+                    </div>
+                </div>
+                <div className="form-group row">
                     <label htmlFor="gender" className="col-sm-2 col-form-label">
                         Gender
                     </label>
@@ -68,25 +83,7 @@ function BirthCertificateSearch() {
                         </select>
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label
-                        htmlFor="name"
-                        className="col-sm-2 col-form-label"
-                    >
-                        Name
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder="Enter district"
-                        />
-                    </div>
-                </div>
-                
+
                 <div className="form-group row">
                     <label
                         htmlFor="dateOfBirth"
