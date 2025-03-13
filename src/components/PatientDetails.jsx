@@ -90,13 +90,13 @@ function PatientDetails() {
                     <div
                         className="d-flex justify-content-end align-items-center mt-3"
                         style={{
-                            maxWidth: "300px",
+                            maxWidth: "500px",
                             marginLeft: "auto",
                             gap: "20px",
                         }}
                     >
                         <select
-                            className="form-control"
+                            className="form-control w-50"
                             value={status}
                             onChange={handleStatusChange}
                         >
