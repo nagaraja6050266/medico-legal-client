@@ -6,12 +6,12 @@ import "./Dashboard.css"; // Import custom CSS
 const recentPatients = [
     {
         id: 1,
-        name: "John Doe",
+        name: "Asru Alphonse",
         admissionDate: "2023-01-01",
     },
     {
         id: 2,
-        name: "Jane Smith",
+        name: "Madhubala",
         admissionDate: "2023-02-01",
     },
     // Add more recent patients as needed

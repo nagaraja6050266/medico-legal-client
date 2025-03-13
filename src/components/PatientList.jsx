@@ -6,17 +6,17 @@ import GenericTable from "./GenericTable";
 const patients = [
     {
         id: 1,
-        name: "John Doe",
+        name: "Asru Alphonse",
         admissionDate: "2023-01-01",
     },
     {
         id: 2,
-        name: "Jane Smith",
+        name: "Madhubala",
         admissionDate: "2023-02-01",
     },
     {
         id: 3,
-        name: "Alice Johnson",
+        name: "Varsha",
         admissionDate: "2023-03-01",
     },
     // Add more patients as needed

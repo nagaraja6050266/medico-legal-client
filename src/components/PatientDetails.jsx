@@ -6,7 +6,7 @@ import Enrollment from "./Enrollment"; // Import Enrollment component
 
 const mockPatientData = {
     1: {
-        name: "John Doe",
+        name: "Asru Alphonse",
         dob: "1990-01-01",
         gender: "Male",
         placeOfBirth: "City Hospital",
@@ -15,7 +15,7 @@ const mockPatientData = {
         parentMobileNumber: "1234567890",
     },
     2: {
-        name: "Jane Smith",
+        name: "Madhubala",
         dob: "1992-02-02",
         gender: "Female",
         placeOfBirth: "City Hospital",
@@ -34,15 +34,14 @@ const mockPatientData = {
     },
     4: {
         name: "Priya",
-        dob
-        : "1992-02-02",
+        dob: "1992-02-02",
         gender: "Female",
         placeOfBirth: "City Hospital",
         parentName: "Mary Smith",
         address: "456 Elm St",
         parentMobileNumber: "0987654321",
         status: "Admitted for delivery",
-    }
+    },
     // Add more mock data as needed
 };
 
