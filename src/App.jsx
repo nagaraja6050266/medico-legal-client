@@ -1,9 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-    Route,
-    BrowserRouter as Router,
-    Routes
-} from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import BirthRecordDetails from "./components/BirthRecordDetails/BirthRecordDetails"; // Import BirthRecordDetails component
 import BirthRecordEntry from "./components/BirthRecordEntry/BirthRecordEntry"; // Import BirthRecordEntry component
@@ -17,14 +13,13 @@ import Search from "./components/Search/Search";
 import { Template } from "./components/Template";
 
 function App() {
-
     return (
         <Router>
             <Routes>
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/signin" element={<SignIn />} />
                 <Route element={<Template />}>
                     <Route path="/" element={<Dashboard />} />
-                    <Route path="/signup" element={<SignUp />} />
-                    <Route path="/signin" element={<SignIn />} />
                     <Route path="/search" element={<Search />} />
                     <Route path="/enrollment" element={<Enrollment />} />{" "}
                     {/* Add Enrollment route */}
