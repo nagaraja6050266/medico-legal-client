@@ -10,8 +10,7 @@ const mockPatientData = {
         dob: "1990-01-01",
         gender: "Male",
         placeOfBirth: "City Hospital",
-        motherName: "Jane Doe",
-        fatherName: "John Smith",
+        parentName: "Jane Doe",
         address: "123 Main St",
         parentMobileNumber: "1234567890",
     },
@@ -20,11 +19,30 @@ const mockPatientData = {
         dob: "1992-02-02",
         gender: "Female",
         placeOfBirth: "City Hospital",
-        motherName: "Mary Smith",
-        fatherName: "John Smith",
+        parentName: "Mary Smith",
         address: "456 Elm St",
         parentMobileNumber: "0987654321",
     },
+    3: {
+        name: "Varsha shree",
+        dob: "1992-02-02",
+        gender: "Female",
+        placeOfBirth: "City Hospital",
+        parentName: "Mary Smith",
+        address: "456 Elm St",
+        parentMobileNumber: "0987654321",
+    },
+    4: {
+        name: "Priya",
+        dob
+        : "1992-02-02",
+        gender: "Female",
+        placeOfBirth: "City Hospital",
+        parentName: "Mary Smith",
+        address: "456 Elm St",
+        parentMobileNumber: "0987654321",
+        status: "Admitted for delivery",
+    }
     // Add more mock data as needed
 };
 
