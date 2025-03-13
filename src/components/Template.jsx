@@ -5,7 +5,7 @@ export function Template() {
     return (
         <>
             <NavBar />
-            <div style={{marginTop: "80px"}}>
+            <div style={{marginTop: "60px"}}>
                 <Outlet />
             </div>
         </>

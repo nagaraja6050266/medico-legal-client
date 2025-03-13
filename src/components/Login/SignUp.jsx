@@ -6,7 +6,7 @@ function SignUp() {
     const [role, setRole] = useState("");
 
     return (
-        <div className="auth-container" style={{width: "100vw", height: "100vh"}}>
+        <div className="auth-container">
             <div className="auth-image">
                 <img src="../src/assets/signin.jpg" alt="Sign Up" />
             </div>
