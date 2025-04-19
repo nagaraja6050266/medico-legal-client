@@ -25,7 +25,7 @@ function BirthCertificateSearch() {
             mobileNumber,
             captcha,
         };
-        navigate("/birth-record-details", { state: { formData } });
+        navigate("/birth-record-entry", { state: { formData } });
     };
 
     return (

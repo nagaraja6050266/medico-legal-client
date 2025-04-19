@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import OtpDialog from "../OtpDialog"; // Import OtpDialog component
+import { createCertificate } from "../../api/certificateApi";
+import { getPatients } from "../../api/patientApi";
 
 function BirthRecordEntry() {
     const [formData, setFormData] = useState({
@@ -12,12 +14,27 @@ function BirthRecordEntry() {
         fatherName: "",
         address: "",
         parentMobileNumber: "",
-        babyWeight: "", // Add babyWeight to formData
-        timeOfBirth: "", // Add timeOfBirth to formData
+        babyWeight: "",
+        timeOfBirth: "",
+        filePath: "",
     });
 
+    const [patients, setPatients] = useState([]);
+    const [selectedPatientId, setSelectedPatientId] = useState("");
     const [showOtpDialog, setShowOtpDialog] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        async function fetchPatients() {
+            try {
+                const response = await getPatients();
+                setPatients(response);
+            } catch (error) {
+                console.error("Error fetching patients:", error);
+            }
+        }
+        fetchPatients();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,21 +44,76 @@ function BirthRecordEntry() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFormData({
+                ...formData,
+                filePath: `/path/to/uploads/${file.name}`, // Simulate file upload path
+            });
+        }
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setShowOtpDialog(true);
+        const certificateData = {
+            certificateType: { certificateTypeId: 1 }, // Birth Certificate
+            certificateDetails: {
+                birthWeight: formData.babyWeight,
+                timeOfBirth: formData.timeOfBirth,
+                fatherName: formData.fatherName,
+                motherName: formData.motherName,
+            },
+            issuedDate: new Date().toISOString().split("T")[0], // Current date
+            filePath: formData.filePath,
+            expiryDate: "", // Optional, can be left empty
+            patient: { patientId: parseInt(selectedPatientId) },
+        };
+        try {
+            await createCertificate(certificateData);
+            alert("Birth Certificate Created Successfully!");
+            navigate("/birth-record-entry");
+        } catch (error) {
+            console.error("Error creating certificate:", error);
+            alert("Failed to create certificate. Please try again.");
+        }
     };
 
     const handleOtpSubmit = (otp) => {
         alert("OTP Submitted: " + otp);
         setShowOtpDialog(false);
-        navigate("/birth-record-details", { state: { formData } });
+        navigate("/birth-record-entry", { state: { formData } });
     };
 
     return (
         <div className="container mt-5">
             <h2>Birth Record Entry</h2>
             <form onSubmit={handleSubmit}>
+                <div className="form-group row">
+                    <label className="col-sm-2 col-form-label">
+                        Select Patient
+                    </label>
+                    <div className="col-sm-10">
+                        <select
+                            className="form-control"
+                            value={selectedPatientId}
+                            onChange={(e) =>
+                                setSelectedPatientId(e.target.value)
+                            }
+                            required
+                        >
+                            <option value="">Select a Patient</option>
+                            {patients.map((patient) => (
+                                <option
+                                    key={patient.patientId}
+                                    value={patient.patientId}
+                                >
+                                    {patient.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
                 <div className="form-group row">
                     <label className="col-sm-2 col-form-label">Name</label>
                     <div className="col-sm-10">
@@ -51,6 +123,7 @@ function BirthRecordEntry() {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                 </div>
@@ -65,6 +138,7 @@ function BirthRecordEntry() {
                             name="dob"
                             value={formData.dob}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                 </div>
@@ -76,6 +150,7 @@ function BirthRecordEntry() {
                             name="gender"
                             value={formData.gender}
                             onChange={handleChange}
+                            required
                         >
                             <option value="">Select Gender</option>
                             <option value="male">Male</option>
@@ -95,6 +170,7 @@ function BirthRecordEntry() {
                             name="motherName"
                             value={formData.motherName}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                 </div>
@@ -109,6 +185,7 @@ function BirthRecordEntry() {
                             name="fatherName"
                             value={formData.fatherName}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                 </div>
@@ -121,6 +198,7 @@ function BirthRecordEntry() {
                             name="address"
                             value={formData.address}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                 </div>
@@ -135,6 +213,7 @@ function BirthRecordEntry() {
                             name="parentMobileNumber"
                             value={formData.parentMobileNumber}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                 </div>
@@ -149,6 +228,7 @@ function BirthRecordEntry() {
                             name="babyWeight"
                             value={formData.babyWeight}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                 </div>
@@ -163,6 +243,20 @@ function BirthRecordEntry() {
                             name="timeOfBirth"
                             value={formData.timeOfBirth}
                             onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-2 col-form-label">
+                        Attach File
+                    </label>
+                    <div className="col-sm-10">
+                        <input
+                            type="file"
+                            className="form-control"
+                            onChange={handleFileChange}
+                            required
                         />
                     </div>
                 </div>

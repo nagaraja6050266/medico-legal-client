@@ -31,14 +31,11 @@ export const verifyOtp = async (phoneNumber, otp) => {
 };
 
 export const createPatient = async (patientData) => {
-    const response = await fetch(`${API_BASE_URL}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(patientData),
-    });
-    console.log(response);
-    if (!response.ok) throw new Error("Client Error: Failed to create patient");
-    return response;
+    const request = {
+        reqUri: API_BASE_URL,
+        body: patientData,
+    }
+    return post(request)
 };
 
 export const getPatients = () => {

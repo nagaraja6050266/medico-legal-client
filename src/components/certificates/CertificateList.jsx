@@ -7,7 +7,7 @@ import {
     getCertificateByTypeKeyword,
     getCertificatesByPatientId,
     getCertificateTypes,
-} from "../api/certificateApi";
+} from "../../api/certificateApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function CertificateList() {
@@ -70,7 +70,7 @@ function CertificateList() {
         } else if (typeId === "6") {
             navigate("/vaccination-record-details");
         } else if (typeId === "birth") {
-            navigate("/birth-record-details");
+            navigate("/birth-record-entry");
         }
     };
 

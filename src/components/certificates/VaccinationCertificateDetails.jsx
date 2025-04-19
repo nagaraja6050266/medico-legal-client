@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createCertificate } from "../../api/certificateApi";
+import { getPatients } from "../../api/patientApi";
 
 function VaccinationCertificateDetails() {
     const [vaccineName, setVaccineName] = useState("");
@@ -7,8 +8,21 @@ function VaccinationCertificateDetails() {
     const [nextDueDate, setNextDueDate] = useState("");
     const [issuedDate, setIssuedDate] = useState("");
     const [expiryDate, setExpiryDate] = useState("");
-    const [patientId, setPatientId] = useState("");
     const [filePath, setFilePath] = useState("");
+    const [patients, setPatients] = useState([]);
+    const [selectedPatientId, setSelectedPatientId] = useState("");
+
+    useEffect(() => {
+        async function fetchPatients() {
+            try {
+                const response = await getPatients();
+                setPatients(response);
+            } catch (error) {
+                console.error("Error fetching patients:", error);
+            }
+        }
+        fetchPatients();
+    }, []);
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -20,15 +34,24 @@ function VaccinationCertificateDetails() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const certificateData = {
-            certificateType: { certificateTypeId: 6 }, // Vaccination Certificate
-            certificateDetails: { vaccineName, doseNumber, nextDueDate },
+            certificateType: { certificateTypeId: 2 }, // Vaccination Certificate
+            certificateDetails: {
+                vaccineName,
+                doseNumber,
+                nextDueDate,
+            },
             issuedDate,
             expiryDate,
             filePath,
-            patient: { patientId: parseInt(patientId) },
+            patient: { patientId: parseInt(selectedPatientId) },
         };
-        await createCertificate(certificateData);
-        alert("Vaccination Certificate Created Successfully!");
+        try {
+            await createCertificate(certificateData);
+            alert("Vaccination Certificate Created Successfully!");
+        } catch (error) {
+            console.error("Error creating certificate:", error);
+            alert("Failed to create certificate. Please try again.");
+        }
     };
 
     return (
@@ -86,14 +109,20 @@ function VaccinationCertificateDetails() {
                     />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Patient ID</label>
-                    <input
-                        type="number"
+                    <label className="form-label">Select Patient</label>
+                    <select
                         className="form-control"
-                        value={patientId}
-                        onChange={(e) => setPatientId(e.target.value)}
+                        value={selectedPatientId}
+                        onChange={(e) => setSelectedPatientId(e.target.value)}
                         required
-                    />
+                    >
+                        <option value="">Select a Patient</option>
+                        {patients.map((patient) => (
+                            <option key={patient.patientId} value={patient.patientId}>
+                                {patient.name}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Attach File</label>

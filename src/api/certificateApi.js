@@ -1,4 +1,4 @@
-import { baseUrl, get } from "./api";
+import { baseUrl, get, post } from "./api";
 
 const API_BASE_URL = baseUrl + "/certificates";
 

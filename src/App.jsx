@@ -1,8 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import "./App.css";
-import BirthRecordDetails from "./components/BirthRecordDetails/BirthRecordDetails"; // Import BirthRecordDetails component
-import BirthRecordEntry from "./components/BirthRecordEntry/BirthRecordEntry"; // Import BirthRecordEntry component
+import "./App.css"; // Import BirthRecordDetails component
+import BirthRecordEntry from "./components/certificates/BirthRecordEntry"; // Import BirthRecordEntry component
+import CertificateDetails from "./components/certificates/CertificateDetails";
+import CertificateList from "./components/certificates/CertificateList";
+import LabReportDetails from "./components/certificates/LabReportDetails"; // Import LabReportDetails component
+import VaccinationCertificateDetails from "./components/certificates/VaccinationCertificateDetails"; // Import VaccinationCertificateDetails component
 import Dashboard from "./components/Dashboard/Dashboard";
 import Enrollment from "./components/Enrollment"; // Import Enrollment component
 import SignIn from "./components/Login/SignIn";
@@ -10,12 +13,6 @@ import SignUp from "./components/Login/SignUp";
 import PatientDetails from "./components/PatientDetails"; // Import PatientDetails component
 import PatientList from "./components/PatientList"; // Import PatientList component
 import { Template } from "./components/Template";
-import VaccinationRecordEntry from "./components/VaccinationRecordEntry/VaccinationRecordEntry"; // Import VaccinationRecordEntry
-import LabReportEntry from "./components/LabReportEntry/LabReportEntry"; // Import LabReportEntry
-import CertificateDetails from "./components/CertificateDetails";
-import CertificateList from "./components/CertificateList";
-import LabReportDetails from "./components/LabReportDetails"; // Import LabReportDetails component
-import VaccinationCertificateDetails from "./components/VaccinationRecordEntry/VaccinationCertificateDetails"; // Import VaccinationCertificateDetails component
 
 function App() {
     return (
@@ -40,20 +37,6 @@ function App() {
                         element={<PatientDetails />}
                     />{" "}
                     {/* Add PatientDetails route */}
-                    <Route
-                        path="/birth-record-details"
-                        element={<BirthRecordDetails />}
-                    />{" "}
-                    {/* Add BirthRecordDetails route */}
-                    <Route
-                        path="/vaccination-record-entry"
-                        element={<VaccinationRecordEntry />}
-                    />{" "}
-                    {/* Add VaccinationRecordEntry route */}
-                    <Route
-                        path="/lab-report-entry"
-                        element={<LabReportEntry />}
-                    />{" "}
                     {/* Add LabReportEntry route */}
                     <Route
                         path="/certificates/:certificateId"

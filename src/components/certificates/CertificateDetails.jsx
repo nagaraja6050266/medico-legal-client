@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getCertificateById } from "../api/certificateApi";
+import { getCertificateById } from "../../api/certificateApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function CertificateDetails() {
