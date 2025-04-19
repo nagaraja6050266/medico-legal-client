@@ -2,13 +2,15 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const labels = [
+    { display: "Patient ID", key: "patientId" },
     { display: "Name", key: "name" },
     { display: "Date of Birth", key: "dob" },
     { display: "Gender", key: "gender" },
-    { display: "Place of Birth", key: "placeOfBirth" },
-    { display: "Parent's / Husband's Name", key: "parentName" },
+    { display: "Contact", key: "contact" },
+    { display: "Husband's Name", key: "husbandName" },
+    { display: "Father's Name", key: "fatherName" },
     { display: "Address", key: "address" },
-    { display: "Parent Mobile Number", key: "parentMobileNumber" },
+    { display: "Admission Date", key: "admissionDate" },
 ];
 
 function GenericTable({ header, data, onRowClick, subheader }) {

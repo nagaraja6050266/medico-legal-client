@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import GenericTable from "./GenericTable";
 import Enrollment from "./Enrollment"; // Import Enrollment component
+import { getPatientById } from "../api/patientApi";
 
 const mockPatientData = {
     1: {
@@ -47,16 +48,18 @@ const mockPatientData = {
 
 function PatientDetails() {
     const { id } = useParams();
-    const [patientData, setPatientData] = useState(null);
+    const [patientData, setPatientData] = useState({});
     const [status, setStatus] = useState("");
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        // Fetch patient data based on ID
-        const data = mockPatientData[id];
-        setPatientData(data);
-        setStatus(data.status);
-    }, [id]);
+        const fetchPatientDetals = async () => {
+            const patient = await getPatientById(id);
+            console.log("Patients: ", patient);
+            setPatientData(patient);
+        };
+        fetchPatientDetals();
+   }, []);
 
     const handleStatusChange = (e) => {
         setStatus(e.target.value);
@@ -83,7 +86,7 @@ function PatientDetails() {
             ) : (
                 <>
                     <GenericTable
-                        subheader={"Patient ID: " + id}
+                        subheader={"Patient ID: " + patientData.patientId}
                         header={"Patient Details"}
                         data={[patientData]}
                     />

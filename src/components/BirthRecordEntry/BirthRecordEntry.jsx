@@ -13,6 +13,7 @@ function BirthRecordEntry() {
         address: "",
         parentMobileNumber: "",
         babyWeight: "", // Add babyWeight to formData
+        timeOfBirth: "", // Add timeOfBirth to formData
     });
 
     const [showOtpDialog, setShowOtpDialog] = useState(false);
@@ -147,6 +148,20 @@ function BirthRecordEntry() {
                             className="form-control"
                             name="babyWeight"
                             value={formData.babyWeight}
+                            onChange={handleChange}
+                        />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-2 col-form-label">
+                        Time of Birth
+                    </label>
+                    <div className="col-sm-10">
+                        <input
+                            type="time"
+                            className="form-control"
+                            name="timeOfBirth"
+                            value={formData.timeOfBirth}
                             onChange={handleChange}
                         />
                     </div>

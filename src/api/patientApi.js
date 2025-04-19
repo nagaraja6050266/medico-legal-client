@@ -1,4 +1,5 @@
 import { baseUrl } from "./api";
+import { get,post } from "./api";
 
 const API_BASE_URL = baseUrl+"/patients";
 
@@ -39,3 +40,17 @@ export const createPatient = async (patientData) => {
     if (!response.ok) throw new Error("Client Error: Failed to create patient");
     return response;
 };
+
+export const getPatients = () => {
+    const request = {
+        reqUri: API_BASE_URL,
+    };
+    return get(request);
+}
+
+export const getPatientById = (id) => {
+    const request = {
+        reqUri: API_BASE_URL+"/"+id
+    }
+    return get(request);
+}

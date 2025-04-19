@@ -11,6 +11,8 @@ import PatientDetails from "./components/PatientDetails"; // Import PatientDetai
 import PatientList from "./components/PatientList"; // Import PatientList component
 import Search from "./components/Search/Search";
 import { Template } from "./components/Template";
+import VaccinationRecordEntry from "./components/VaccinationRecordEntry/VaccinationRecordEntry"; // Import VaccinationRecordEntry
+import LabReportEntry from "./components/LabReportEntry/LabReportEntry"; // Import LabReportEntry
 
 function App() {
     return (
@@ -40,6 +42,16 @@ function App() {
                         element={<BirthRecordDetails />}
                     />{" "}
                     {/* Add BirthRecordDetails route */}
+                    <Route
+                        path="/vaccination-record-entry"
+                        element={<VaccinationRecordEntry />}
+                    />{" "}
+                    {/* Add VaccinationRecordEntry route */}
+                    <Route
+                        path="/lab-report-entry"
+                        element={<LabReportEntry />}
+                    />{" "}
+                    {/* Add LabReportEntry route */}
                 </Route>
             </Routes>
         </Router>

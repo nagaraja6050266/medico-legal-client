@@ -1,32 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import GenericTable from "./GenericTable";
-
-const patients = [
-    {
-        id: 1,
-        name: "Asru Alphonse",
-        admissionDate: "2023-01-01",
-    },
-    {
-        id: 2,
-        name: "Madhubala",
-        admissionDate: "2023-02-01",
-    },
-    {
-        id: 3,
-        name: "Varsha",
-        admissionDate: "2023-03-01",
-    },
-    // Add more patients as needed
-];
+import { getPatients } from "../api/patientApi";
 
 function PatientList() {
     const navigate = useNavigate();
+    const [patients, setPatients] = useState([]);
 
-    const handleRowClick = (id) => {
-        navigate(`/patients/${id}`);
+    useEffect(() => {
+        const fetchPatients = async () => {
+            const patientsList = await getPatients();
+            console.log("Patients List", patientsList);
+            setPatients(patientsList);
+        };
+        fetchPatients();
+    }, []); // Empty dependency array ensures this runs only once on mount.
+
+    const handleRowClick = (patientId) => {
+        navigate(`/patients/${patientId}`);
     };
 
     return (
@@ -48,19 +40,26 @@ function PatientList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {patients.map((patient) => (
-                            <tr
-                                key={patient.id}
-                                onClick={() => handleRowClick(patient.id)}
-                                style={{ cursor: "pointer" }}
-                            >
-                                <td className="text-left">{patient.id}</td>
-                                <td className="text-left">{patient.name}</td>
-                                <td className="text-left">
-                                    {patient.admissionDate}
-                                </td>
-                            </tr>
-                        ))}
+                        {Array.isArray(patients) &&
+                            patients.map((patient) => (
+                                <tr
+                                    key={patient.patientId}
+                                    onClick={() =>
+                                        handleRowClick(patient.patientId)
+                                    }
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    <td className="text-left">
+                                        {patient.patientId}
+                                    </td>
+                                    <td className="text-left">
+                                        {patient.name}
+                                    </td>
+                                    <td className="text-left">
+                                        {patient.admissionDate}
+                                    </td>
+                                </tr>
+                            ))}
                     </tbody>
                 </table>
             </div>
