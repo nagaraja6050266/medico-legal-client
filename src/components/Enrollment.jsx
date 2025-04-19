@@ -20,11 +20,12 @@ function Enrollment({ header = "Enrollment Form", patientData = {} }) {
 
     useEffect(() => {
         setFormData({ ...formData, ...patientData });
-    }, [patientData]);
+    }, []);
 
     const handleChange = (e) => {
         const { id, value } = e.target;
         setFormData({ ...formData, [id]: value });
+        console.log(id," value set to ",value);
     };
 
     const handleSubmit = async (e) => {

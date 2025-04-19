@@ -1,18 +1,20 @@
-const API_BASE_URL = "http://localhost:8086/api/patients";
+import { baseUrl } from "./api";
+
+const API_BASE_URL = baseUrl+"/patients";
 
 export const sendOtp = async (phoneNumber) => {
     const response = await fetch(`${API_BASE_URL}/send-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber }),
+        body: JSON.stringify({ mobileNumber: phoneNumber }),
     });
-    if (!response.ok) throw new Error("Failed to send OTP");
+    console.log(response);
+    if (!response.ok) throw new Error("Client Error: Failed to send OTP");
     return response;
 };
 
 export const verifyOtp = async (phoneNumber, otp) => {
-
-    if(otp === "12345"){
+    if (otp === "12345") {
         //Testing check
         return;
     }
@@ -20,7 +22,7 @@ export const verifyOtp = async (phoneNumber, otp) => {
     const response = await fetch(`${API_BASE_URL}/verify-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber, otp }),
+        body: JSON.stringify({ mobileNumber: phoneNumber, otp: otp }),
     });
     const data = await response.json();
     if (!response.ok || !data.verified) throw new Error("Invalid OTP");
@@ -28,11 +30,12 @@ export const verifyOtp = async (phoneNumber, otp) => {
 };
 
 export const createPatient = async (patientData) => {
-    const response = await fetch(`${API_BASE_URL}/patients`, {
+    const response = await fetch(`${API_BASE_URL}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(patientData),
     });
-    if (!response.ok) throw new Error("Failed to create patient");
+    console.log(response);
+    if (!response.ok) throw new Error("Client Error: Failed to create patient");
     return response;
 };
