@@ -54,6 +54,11 @@ function NavBar() {
                             Registered Patients
                         </Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/search">
+                            Search
+                        </Link>
+                    </li>
                 </ul>
                 <div className="navbar-profile ml-auto">
                     <div className="input-group record-entry-dropdown">
