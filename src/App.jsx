@@ -9,10 +9,13 @@ import SignIn from "./components/Login/SignIn";
 import SignUp from "./components/Login/SignUp";
 import PatientDetails from "./components/PatientDetails"; // Import PatientDetails component
 import PatientList from "./components/PatientList"; // Import PatientList component
-import Search from "./components/Search/Search";
 import { Template } from "./components/Template";
 import VaccinationRecordEntry from "./components/VaccinationRecordEntry/VaccinationRecordEntry"; // Import VaccinationRecordEntry
 import LabReportEntry from "./components/LabReportEntry/LabReportEntry"; // Import LabReportEntry
+import CertificateDetails from "./components/CertificateDetails";
+import CertificateList from "./components/CertificateList";
+import LabReportDetails from "./components/LabReportDetails"; // Import LabReportDetails component
+import VaccinationCertificateDetails from "./components/VaccinationRecordEntry/VaccinationCertificateDetails"; // Import VaccinationCertificateDetails component
 
 function App() {
     return (
@@ -22,7 +25,7 @@ function App() {
                 <Route path="/signin" element={<SignIn />} />
                 <Route element={<Template />}>
                     <Route path="/" element={<Dashboard />} />
-                    <Route path="/search" element={<Search />} />
+                    <Route path="/search" element={<CertificateList />} />
                     <Route path="/enrollment" element={<Enrollment />} />{" "}
                     {/* Add Enrollment route */}
                     <Route path="/patients" element={<PatientList />} />{" "}
@@ -52,6 +55,20 @@ function App() {
                         element={<LabReportEntry />}
                     />{" "}
                     {/* Add LabReportEntry route */}
+                    <Route
+                        path="/certificates/:certificateId"
+                        element={<CertificateDetails />}
+                    />
+                    <Route
+                        path="/lab-report-details"
+                        element={<LabReportDetails />}
+                    />{" "}
+                    {/* Add LabReportDetails route */}
+                    <Route
+                        path="/vaccination-certificate-details"
+                        element={<VaccinationCertificateDetails />}
+                    />{" "}
+                    {/* Add VaccinationCertificateDetails route */}
                 </Route>
             </Routes>
         </Router>

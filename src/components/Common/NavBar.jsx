@@ -61,24 +61,6 @@ function NavBar() {
                     </li>
                 </ul>
                 <div className="navbar-profile ml-auto">
-                    <div className="input-group record-entry-dropdown">
-                        <label style={{ color: "white" }} className="mr-2">
-                            Record Entry:
-                        </label>
-                        <select
-                            className="form-control"
-                            onChange={handleSelectChange}
-                        >
-                            <option value="">Select Record Type</option>
-                            <option value="birth-record-entry">
-                                Birth Record
-                            </option>
-                            <option value="vaccination-record-entry">
-                                Vaccination Record
-                            </option>
-                            <option value="lab-report-entry">Lab Report</option>
-                        </select>
-                    </div>
                     <a className="nav-link" href="#">
                         <FontAwesomeIcon icon={faUser} /> Profile Name
                     </a>
