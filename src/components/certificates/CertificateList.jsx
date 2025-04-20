@@ -68,7 +68,7 @@ function CertificateList() {
         if (typeId === "5") {
             navigate("/lab-report-details");
         } else if (typeId === "6") {
-            navigate("/vaccination-record-details");
+            navigate("/vaccination-certificate-details");
         } else if (typeId === "birth") {
             navigate("/birth-record-entry");
         }

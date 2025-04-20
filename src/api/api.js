@@ -7,7 +7,7 @@ export async function post({ reqUri = "", body = {} }) {
         body: JSON.stringify(body),
     });
 
-    console.log(response.json());
+    // console.log(response);
 
     if (!response.ok) {
 
