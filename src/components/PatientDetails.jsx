@@ -90,7 +90,7 @@ function PatientDetails() {
                         header={"Patient Details"}
                         data={[patientData]}
                     />
-                    <div
+                    {/* <div
                         className="d-flex justify-content-end align-items-center mt-3"
                         style={{
                             maxWidth: "500px",
@@ -122,7 +122,7 @@ function PatientDetails() {
                         >
                             Edit Details
                         </button>
-                    </div>
+                    </div> */}
                 </>
             )}
         </div>
