@@ -64,9 +64,9 @@ function BirthRecordEntry() {
                 fatherName: formData.fatherName,
                 motherName: formData.motherName,
             },
-            issuedDate: new Date().toISOString().split("T")[0], // Current date
+            issuedDate:formData.issuedDate, 
             filePath: formData.filePath,
-            expiryDate: "", // Optional, can be left empty
+            expiryDate: formData.expiryDate, // Optional, can be left empty
             patient: { patientId: parseInt(selectedPatientId) },
         };
         try {
@@ -242,6 +242,36 @@ function BirthRecordEntry() {
                             className="form-control"
                             name="timeOfBirth"
                             value={formData.timeOfBirth}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-2 col-form-label">
+                        Issue Date
+                    </label>
+                    <div className="col-sm-10">
+                        <input
+                            type="date"
+                            className="form-control"
+                            name="issuedDate"
+                            value={formData.issuedDate}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-2 col-form-label">
+                        Expiry Date
+                    </label>
+                    <div className="col-sm-10">
+                        <input
+                            type="date"
+                            className="form-control"
+                            name="expiryDate"
+                            value={formData.expiryDate}
                             onChange={handleChange}
                             required
                         />

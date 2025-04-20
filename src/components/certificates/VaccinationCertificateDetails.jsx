@@ -57,7 +57,7 @@ function VaccinationCertificateDetails() {
     return (
         <div className="container mt-4">
             <h2>Create Vaccination Certificate</h2>
-            <form onSubmit={handleSubmit}>
+            <form className="text-start" onSubmit={handleSubmit}> 
                 <div className="mb-3">
                     <label className="form-label">Vaccine Name</label>
                     <input

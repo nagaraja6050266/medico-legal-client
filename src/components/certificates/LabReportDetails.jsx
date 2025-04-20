@@ -55,7 +55,7 @@ function LabReportDetails() {
     return (
         <div className="container mt-4">
             <h2>Create Lab Report Certificate</h2>
-            <form onSubmit={handleSubmit}>
+            <form className="text-start" onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label className="form-label">Test Type</label>
                     <input
