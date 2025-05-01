@@ -25,9 +25,9 @@ export const verifyOtp = async (phoneNumber, otp) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ mobileNumber: phoneNumber, otp: otp }),
     });
-    const data = await response.json();
-    if (!response.ok || !data.verified) throw new Error("Invalid OTP");
-    return data;
+    // const data = await response.json();
+    if (!response.ok) throw new Error("Invalid OTP");
+    return response;
 };
 
 export const createPatient = async (patientData) => {

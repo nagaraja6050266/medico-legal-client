@@ -40,7 +40,7 @@ function NavBar() {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">
+                        <Link className="nav-link" to="/dashboard">
                             Home
                         </Link>
                     </li>

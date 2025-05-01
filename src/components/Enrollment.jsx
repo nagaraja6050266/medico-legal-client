@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import OtpDialog from "./OtpDialog";
 import { sendOtp, verifyOtp, createPatient } from "../api/patientApi"; // Import API functions
+import { useNavigate } from "react-router-dom";
 
 function Enrollment({ header = "Enrollment Form", patientData = {} }) {
     const [showOtpDialog, setShowOtpDialog] = useState(false);
     const [otpVerified, setOtpVerified] = useState(false);
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: "",
         gender: "",
@@ -42,7 +44,11 @@ function Enrollment({ header = "Enrollment Form", patientData = {} }) {
 
     const handleOtpSubmit = async (otp) => {
         try {
-            await verifyOtp(formData.phoneNumber, otp);
+            let phoneNumber = formData.phoneNumber;
+            if (!phoneNumber.startsWith("+")) {
+                phoneNumber = "+91" + phoneNumber;
+            }
+            await verifyOtp(phoneNumber, otp);
             setOtpVerified(true);
             alert("OTP verified successfully!");
 
@@ -61,6 +67,7 @@ function Enrollment({ header = "Enrollment Form", patientData = {} }) {
             await createPatient(requestBody);
             alert("Patient created successfully!");
             setShowOtpDialog(false);
+            navigate("/patients");
         } catch (error) {
             console.error("Error verifying OTP or creating patient:", error);
             alert("Failed to verify OTP or create patient. Please try again.");
