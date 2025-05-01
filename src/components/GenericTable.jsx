@@ -7,8 +7,8 @@ const labels = [
     { display: "Date of Birth", key: "dob" },
     { display: "Gender", key: "gender" },
     { display: "Contact", key: "contact" },
-    { display: "Husband's Name", key: "husbandName" },
-    { display: "Father's Name", key: "fatherName" },
+    { display: "Husband's Name / Father's Name", key: "husbandName" },
+    // { display: "Father's Name", key: "fatherName" },
     { display: "Address", key: "address" },
     { display: "Admission Date", key: "admissionDate" },
 ];

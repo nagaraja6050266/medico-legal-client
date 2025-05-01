@@ -60,10 +60,10 @@ function NavBar() {
                         </Link>
                     </li>
                 </ul>
-                <div className="navbar-profile ml-auto">
-                    <a className="nav-link" href="#">
-                        <FontAwesomeIcon icon={faUser} /> Profile Name
-                    </a>
+                <div style={{paddingRight: "25px"}} className="navbar-profile">
+                    <Link className="nav-link" to="/">
+                        Log out
+                    </Link>
                 </div>
             </div>
         </nav>

@@ -31,8 +31,8 @@ function SignIn() {
             </div>
             <div className="auth-form">
                 <h2>Sign In</h2>
-                <form onSubmit={handleSignIn} className="p-4 border rounded shadow-sm bg-light">
-                    <div className="form-group row">
+                <form onSubmit={handleSignIn} className="p-4 border rounded shadow-sm bg-light" style={{gap: "20px"}}>
+                    <div className="form-group row pb-4">
                         <label
                             htmlFor="email"
                             className="col-sm-2 col-form-label"
@@ -49,7 +49,7 @@ function SignIn() {
                             />
                         </div>
                     </div>
-                    <div className="form-group row">
+                    <div className="form-group row pb-4">
                         <label
                             htmlFor="password"
                             className="col-sm-2 col-form-label"
