@@ -64,15 +64,15 @@ function BirthRecordEntry() {
                 fatherName: formData.fatherName,
                 motherName: formData.motherName,
             },
-            issuedDate:formData.issuedDate, 
+            issuedDate: formData.issuedDate,
+            expiryDate: formData.expiryDate || "",
             filePath: formData.filePath,
-            expiryDate: formData.expiryDate, // Optional, can be left empty
             patient: { patientId: parseInt(selectedPatientId) },
         };
         try {
             await createCertificate(certificateData);
             alert("Birth Certificate Created Successfully!");
-            navigate("/birth-record-entry");
+            navigate("/certificates");
         } catch (error) {
             console.error("Error creating certificate:", error);
             alert("Failed to create certificate. Please try again.");
@@ -89,7 +89,7 @@ function BirthRecordEntry() {
         <div className="container mt-5">
             <h2>Birth Record Entry</h2>
             <form onSubmit={handleSubmit}>
-                <div className="form-group row">
+                <div className="form-group row mb-4">
                     <label className="col-sm-2 col-form-label">
                         Select Patient
                     </label>
@@ -114,7 +114,7 @@ function BirthRecordEntry() {
                         </select>
                     </div>
                 </div>
-                <div className="form-group row">
+                <div className="form-group row mb-4">
                     <label className="col-sm-2 col-form-label">Name</label>
                     <div className="col-sm-10">
                         <input
@@ -127,7 +127,7 @@ function BirthRecordEntry() {
                         />
                     </div>
                 </div>
-                <div className="form-group row">
+                <div className="form-group row mb-4">
                     <label className="col-sm-2 col-form-label">
                         Date of Birth
                     </label>
@@ -142,7 +142,7 @@ function BirthRecordEntry() {
                         />
                     </div>
                 </div>
-                <div className="form-group row">
+                <div className="form-group row mb-4">
                     <label className="col-sm-2 col-form-label">Gender</label>
                     <div className="col-sm-10">
                         <select
@@ -159,7 +159,7 @@ function BirthRecordEntry() {
                         </select>
                     </div>
                 </div>
-                <div className="form-group row">
+                <div className="form-group row mb-4">
                     <label className="col-sm-2 col-form-label">
                         Mother's Name
                     </label>
@@ -174,7 +174,7 @@ function BirthRecordEntry() {
                         />
                     </div>
                 </div>
-                <div className="form-group row">
+                <div className="form-group row mb-4">
                     <label className="col-sm-2 col-form-label">
                         Father's Name
                     </label>
@@ -189,7 +189,7 @@ function BirthRecordEntry() {
                         />
                     </div>
                 </div>
-                <div className="form-group row">
+                <div className="form-group row mb-4">
                     <label className="col-sm-2 col-form-label">Address</label>
                     <div className="col-sm-10">
                         <input
@@ -202,7 +202,7 @@ function BirthRecordEntry() {
                         />
                     </div>
                 </div>
-                <div className="form-group row">
+                <div className="form-group row mb-4">
                     <label className="col-sm-2 col-form-label">
                         Parent Mobile Number
                     </label>
@@ -217,7 +217,7 @@ function BirthRecordEntry() {
                         />
                     </div>
                 </div>
-                <div className="form-group row">
+                <div className="form-group row mb-4">
                     <label className="col-sm-2 col-form-label">
                         Baby Weight (kg)
                     </label>
@@ -232,7 +232,7 @@ function BirthRecordEntry() {
                         />
                     </div>
                 </div>
-                <div className="form-group row">
+                <div className="form-group row mb-4">
                     <label className="col-sm-2 col-form-label">
                         Time of Birth
                     </label>
@@ -247,7 +247,7 @@ function BirthRecordEntry() {
                         />
                     </div>
                 </div>
-                <div className="form-group row">
+                <div className="form-group row mb-4">
                     <label className="col-sm-2 col-form-label">
                         Issue Date
                     </label>
@@ -262,22 +262,7 @@ function BirthRecordEntry() {
                         />
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">
-                        Expiry Date
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            type="date"
-                            className="form-control"
-                            name="expiryDate"
-                            value={formData.expiryDate}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
+                <div className="form-group row mb-4">
                     <label className="col-sm-2 col-form-label">
                         Attach File
                     </label>

@@ -7,10 +7,10 @@ function VaccinationCertificateDetails() {
     const [doseNumber, setDoseNumber] = useState("");
     const [nextDueDate, setNextDueDate] = useState("");
     const [issuedDate, setIssuedDate] = useState("");
-    const [expiryDate, setExpiryDate] = useState("");
     const [filePath, setFilePath] = useState("");
     const [patients, setPatients] = useState([]);
     const [selectedPatientId, setSelectedPatientId] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchPatients() {
@@ -41,13 +41,14 @@ function VaccinationCertificateDetails() {
                 nextDueDate,
             },
             issuedDate,
-            expiryDate,
+            expiryDate: "", // Optional, set if needed
             filePath,
             patient: { patientId: parseInt(selectedPatientId) },
         };
         try {
             await createCertificate(certificateData);
             alert("Vaccination Certificate Created Successfully!");
+            navigate("/certificates"); // Redirect to certificates list
         } catch (error) {
             console.error("Error creating certificate:", error);
             alert("Failed to create certificate. Please try again.");
@@ -57,8 +58,8 @@ function VaccinationCertificateDetails() {
     return (
         <div className="container mt-4">
             <h2>Create Vaccination Certificate</h2>
-            <form className="text-start" onSubmit={handleSubmit}> 
-                <div className="mb-3">
+            <form className="text-start" onSubmit={handleSubmit}>
+                <div className="mb-4">
                     <label className="form-label">Vaccine Name</label>
                     <input
                         type="text"
@@ -68,7 +69,7 @@ function VaccinationCertificateDetails() {
                         required
                     />
                 </div>
-                <div className="mb-3">
+                <div className="mb-4">
                     <label className="form-label">Dose Number</label>
                     <input
                         type="number"
@@ -78,7 +79,7 @@ function VaccinationCertificateDetails() {
                         required
                     />
                 </div>
-                <div className="mb-3">
+                <div className="mb-4">
                     <label className="form-label">Next Due Date</label>
                     <input
                         type="date"
@@ -88,7 +89,7 @@ function VaccinationCertificateDetails() {
                         required
                     />
                 </div>
-                <div className="mb-3">
+                <div className="mb-4">
                     <label className="form-label">Issued Date</label>
                     <input
                         type="date"
@@ -98,17 +99,7 @@ function VaccinationCertificateDetails() {
                         required
                     />
                 </div>
-                <div className="mb-3">
-                    <label className="form-label">Expiry Date</label>
-                    <input
-                        type="date"
-                        className="form-control"
-                        value={expiryDate}
-                        onChange={(e) => setExpiryDate(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="mb-3">
+                <div className="mb-4">
                     <label className="form-label">Select Patient</label>
                     <select
                         className="form-control"
@@ -118,13 +109,16 @@ function VaccinationCertificateDetails() {
                     >
                         <option value="">Select a Patient</option>
                         {patients.map((patient) => (
-                            <option key={patient.patientId} value={patient.patientId}>
+                            <option
+                                key={patient.patientId}
+                                value={patient.patientId}
+                            >
                                 {patient.name}
                             </option>
                         ))}
                     </select>
                 </div>
-                <div className="mb-3">
+                <div className="mb-4">
                     <label className="form-label">Attach File</label>
                     <input
                         type="file"

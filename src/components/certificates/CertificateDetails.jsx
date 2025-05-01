@@ -46,7 +46,6 @@ function CertificateDetails() {
         addDetail("Type", certificate.certificateType.typeName);
         addDetail("Description", certificate.certificateType.description);
         addDetail("Issued Date", certificate.issuedDate);
-        addDetail("Expiry Date", certificate.expiryDate);
         addDetail("Patient Name", certificate.patient.name);
         addDetail("Contact", certificate.patient.contact);
         addDetail("Address", certificate.patient.address);
@@ -126,10 +125,6 @@ function CertificateDetails() {
                         <tr>
                             <td className="fw-bold">Issued Date</td>
                             <td>{certificate.issuedDate}</td>
-                        </tr>
-                        <tr>
-                            <td className="fw-bold">Expiry Date</td>
-                            <td>{certificate.expiryDate}</td>
                         </tr>
                         <tr>
                             <td className="fw-bold">Patient</td>

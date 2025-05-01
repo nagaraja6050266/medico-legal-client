@@ -92,7 +92,7 @@ function Dashboard() {
                     <button
                         className="btn btn-link"
                         style={{ color: "black", fontWeight: "bold" }}
-                        onClick={() => navigate("/search")}
+                        onClick={() => navigate("/certificates")}
                     >
                         View More
                     </button>

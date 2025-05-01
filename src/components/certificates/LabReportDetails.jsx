@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { createCertificate } from "../../api/certificateApi";
 import { getPatients } from "../../api/patientApi";
+import { useNavigate } from "react-router-dom";
 
 function LabReportDetails() {
     const [testType, setTestType] = useState("");
     const [testResults, setTestResults] = useState("");
     const [issuedDate, setIssuedDate] = useState("");
-    const [expiryDate, setExpiryDate] = useState("");
     const [filePath, setFilePath] = useState("");
     const [patients, setPatients] = useState([]);
     const [selectedPatientId, setSelectedPatientId] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchPatients() {
@@ -39,13 +40,14 @@ function LabReportDetails() {
                 testResults,
             },
             issuedDate,
-            expiryDate,
+            expiryDate: "", 
             filePath,
             patient: { patientId: parseInt(selectedPatientId) },
         };
         try {
             await createCertificate(certificateData);
             alert("Lab Report Certificate Created Successfully!");
+            navigate("/certificates"); // Redirect to certificates list
         } catch (error) {
             console.error("Error creating certificate:", error);
             alert("Failed to create certificate. Please try again.");
@@ -56,7 +58,7 @@ function LabReportDetails() {
         <div className="container mt-4">
             <h2>Create Lab Report Certificate</h2>
             <form className="text-start" onSubmit={handleSubmit}>
-                <div className="mb-3">
+                <div className="mb-4">
                     <label className="form-label">Test Type</label>
                     <input
                         type="text"
@@ -66,7 +68,7 @@ function LabReportDetails() {
                         required
                     />
                 </div>
-                <div className="mb-3">
+                <div className="mb-4">
                     <label className="form-label">Test Results</label>
                     <input
                         type="text"
@@ -76,7 +78,7 @@ function LabReportDetails() {
                         required
                     />
                 </div>
-                <div className="mb-3">
+                <div className="mb-4">
                     <label className="form-label">Issued Date</label>
                     <input
                         type="date"
@@ -86,17 +88,7 @@ function LabReportDetails() {
                         required
                     />
                 </div>
-                <div className="mb-3">
-                    <label className="form-label">Expiry Date</label>
-                    <input
-                        type="date"
-                        className="form-control"
-                        value={expiryDate}
-                        onChange={(e) => setExpiryDate(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="mb-3">
+                <div className="mb-4">
                     <label className="form-label">Select Patient</label>
                     <select
                         className="form-control"
@@ -106,13 +98,16 @@ function LabReportDetails() {
                     >
                         <option value="">Select a Patient</option>
                         {patients.map((patient) => (
-                            <option key={patient.patientId} value={patient.patientId}>
+                            <option
+                                key={patient.patientId}
+                                value={patient.patientId}
+                            >
                                 {patient.name}
                             </option>
                         ))}
                     </select>
                 </div>
-                <div className="mb-3">
+                <div className="mb-4">
                     <label className="form-label">Attach File</label>
                     <input
                         type="file"

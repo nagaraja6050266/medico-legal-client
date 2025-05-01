@@ -1,6 +1,8 @@
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import "./App.css"; // Import BirthRecordDetails component
+import "./App.css";
+import LoginPage from "./components/Login/LoginPage"; // Import LoginPage
 import BirthRecordEntry from "./components/certificates/BirthRecordEntry"; // Import BirthRecordEntry component
 import CertificateDetails from "./components/certificates/CertificateDetails";
 import CertificateList from "./components/certificates/CertificateList";
@@ -15,6 +17,7 @@ import PatientList from "./components/PatientList"; // Import PatientList compon
 import { Template } from "./components/Template";
 
 function App() {
+
     return (
         <Router>
             <Routes>
@@ -22,7 +25,7 @@ function App() {
                 <Route path="/signin" element={<SignIn />} />
                 <Route element={<Template />}>
                     <Route path="/" element={<Dashboard />} />
-                    <Route path="/search" element={<CertificateList />} />
+                    <Route path="/certificates" element={<CertificateList />} />
                     <Route path="/enrollment" element={<Enrollment />} />{" "}
                     {/* Add Enrollment route */}
                     <Route path="/patients" element={<PatientList />} />{" "}
