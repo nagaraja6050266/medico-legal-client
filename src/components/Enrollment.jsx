@@ -25,7 +25,7 @@ function Enrollment({ header = "Enrollment Form", patientData = {} }) {
     const handleChange = (e) => {
         const { id, value } = e.target;
         setFormData({ ...formData, [id]: value });
-        console.log(id," value set to ",value);
+        console.log(id, " value set to ", value);
     };
 
     const handleSubmit = async (e) => {
@@ -69,158 +69,176 @@ function Enrollment({ header = "Enrollment Form", patientData = {} }) {
 
     return (
         <div className="container mt-5">
-            <h1
-                style={{ textAlign: "center", marginTop: "100px !important" }}
-                className="m-2"
-            >
-                {header}
-            </h1>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group row">
-                    <label htmlFor="name" className="col-sm-2 col-form-label">
-                        Name
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
+            <div className="card shadow-lg">
+                <div className="card-header bg-primary text-white">
+                    <h1 className="text-center">{header}</h1>
+                </div>
+                <div className="card-body">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group row align-items-center mb-4">
+                            <label
+                                htmlFor="name"
+                                className="col-sm-3 col-form-label text-right"
+                            >
+                                Name
+                            </label>
+                            <div className="col-sm-9">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div className="form-group row align-items-center mb-4">
+                            <label
+                                htmlFor="gender"
+                                className="col-sm-3 col-form-label text-right"
+                            >
+                                Gender
+                            </label>
+                            <div className="col-sm-9">
+                                <select
+                                    className="form-control"
+                                    id="gender"
+                                    value={formData.gender}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="form-group row align-items-center mb-4">
+                            <label
+                                htmlFor="parentName"
+                                className="col-sm-3 col-form-label text-right"
+                            >
+                                Parent's/Husband's Name
+                            </label>
+                            <div className="col-sm-9">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="parentName"
+                                    value={formData.parentName}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div className="form-group row align-items-center mb-4">
+                            <label
+                                htmlFor="age"
+                                className="col-sm-3 col-form-label text-right"
+                            >
+                                Age
+                            </label>
+                            <div className="col-sm-9">
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    id="age"
+                                    value={formData.age}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div className="form-group row align-items-center mb-4">
+                            <label
+                                htmlFor="phoneNumber"
+                                className="col-sm-3 col-form-label text-right"
+                            >
+                                Phone Number
+                            </label>
+                            <div className="col-sm-9">
+                                <input
+                                    type="tel"
+                                    className="form-control"
+                                    id="phoneNumber"
+                                    value={formData.phoneNumber}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div className="form-group row align-items-center mb-4">
+                            <label
+                                htmlFor="dob"
+                                className="col-sm-3 col-form-label text-right"
+                            >
+                                Date of Birth
+                            </label>
+                            <div className="col-sm-9">
+                                <input
+                                    type="date"
+                                    className="form-control"
+                                    id="dob"
+                                    value={formData.dob}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div className="form-group row align-items-center mb-4">
+                            <label
+                                htmlFor="address"
+                                className="col-sm-3 col-form-label text-right"
+                            >
+                                Address
+                            </label>
+                            <div className="col-sm-9">
+                                <textarea
+                                    className="form-control"
+                                    id="address"
+                                    value={formData.address}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div className="form-group row align-items-center mb-4">
+                            <label
+                                htmlFor="admissionDate"
+                                className="col-sm-3 col-form-label text-right"
+                            >
+                                Admission Date
+                            </label>
+                            <div className="col-sm-9">
+                                <input
+                                    type="date"
+                                    className="form-control"
+                                    id="admissionDate"
+                                    value={formData.admissionDate}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div className="text-center">
+                            <button
+                                type="submit"
+                                className="btn btn-primary mt-3"
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                    {showOtpDialog && (
+                        <OtpDialog
+                            onClose={() => setShowOtpDialog(false)}
+                            onOtpSubmit={handleOtpSubmit}
                         />
-                    </div>
+                    )}
                 </div>
-                <div className="form-group row">
-                    <label htmlFor="gender" className="col-sm-2 col-form-label">
-                        Gender
-                    </label>
-                    <div className="col-sm-10">
-                        <select
-                            className="form-control"
-                            id="gender"
-                            value={formData.gender}
-                            onChange={handleChange}
-                            required
-                        >
-                            <option value="">Select Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label
-                        htmlFor="parentName"
-                        className="col-sm-2 col-form-label"
-                    >
-                        Parent's/Husband's Name
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="parentName"
-                            value={formData.parentName}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label htmlFor="age" className="col-sm-2 col-form-label">
-                        Age
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            type="number"
-                            className="form-control"
-                            id="age"
-                            value={formData.age}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label
-                        htmlFor="phoneNumber"
-                        className="col-sm-2 col-form-label"
-                    >
-                        Phone Number
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            type="tel"
-                            className="form-control"
-                            id="phoneNumber"
-                            value={formData.phoneNumber}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label htmlFor="dob" className="col-sm-2 col-form-label">
-                        Date of Birth
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            type="date"
-                            className="form-control"
-                            id="dob"
-                            value={formData.dob}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label
-                        htmlFor="address"
-                        className="col-sm-2 col-form-label"
-                    >
-                        Address
-                    </label>
-                    <div className="col-sm-10">
-                        <textarea
-                            className="form-control"
-                            id="address"
-                            value={formData.address}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label
-                        htmlFor="admissionDate"
-                        className="col-sm-2 col-form-label"
-                    >
-                        Admission Date
-                    </label>
-                    <div className="col-sm-10">
-                        <input
-                            type="date"
-                            className="form-control"
-                            id="admissionDate"
-                            value={formData.admissionDate}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                </div>
-                <button type="submit" className="btn btn-primary">
-                    Submit
-                </button>
-            </form>
-            {showOtpDialog && (
-                <OtpDialog
-                    onClose={() => setShowOtpDialog(false)}
-                    onOtpSubmit={handleOtpSubmit}
-                />
-            )}
+            </div>
         </div>
     );
 }

@@ -78,8 +78,8 @@ function CertificateList() {
         <div className="container mt-4">
             <h2>Certificate List</h2>
             <div className="d-flex justify-content-between mb-4">
-                <form onSubmit={handleSearch} className="w-75">
-                    <div className="form-group row">
+                <form onSubmit={handleSearch} style={{ width: "50%" }}>
+                    <div className="form-group w-100 row">
                         <label
                             htmlFor="searchType"
                             className="col-sm-2 col-form-label"
@@ -147,12 +147,15 @@ function CertificateList() {
                         </div>
                     </div>
                 </form>
-                <div>
+                <div className="d-flex align-items-center" style={{ width: "30%" }}>
+                    <label htmlFor="addCertificate" className="mr-2 w-50">
+                        Add Certificate:
+                    </label>
                     <select
                         className="form-control"
                         onChange={(e) => handleAddCertificate(e.target.value)}
                     >
-                        <option value="">Add Certificate</option>
+                        <option value="">Choose Type</option>
                         <option value="5">Lab Report</option>
                         <option value="6">Vaccination Certificate</option>
                         <option value="birth">Birth Record</option>
