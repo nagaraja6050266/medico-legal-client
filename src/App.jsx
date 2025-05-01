@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import LoginPage from "./components/Login/LoginPage"; // Import LoginPage
 import BirthRecordEntry from "./components/certificates/BirthRecordEntry"; // Import BirthRecordEntry component
 import CertificateDetails from "./components/certificates/CertificateDetails";
 import CertificateList from "./components/certificates/CertificateList";
@@ -22,9 +20,9 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/signup" element={<SignUp />} />
-                <Route path="/signin" element={<SignIn />} />
+                <Route path="/" element={<SignIn />} />
                 <Route element={<Template />}>
-                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/certificates" element={<CertificateList />} />
                     <Route path="/enrollment" element={<Enrollment />} />{" "}
                     {/* Add Enrollment route */}
