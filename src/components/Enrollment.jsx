@@ -30,10 +30,30 @@ function Enrollment({ header = "Enrollment Form", patientData = {} }) {
         console.log(id, " value set to ", value);
     };
 
+    const getSMSMsg = async () => {
+        return (
+            "\n\nHi " +
+            formData.name +
+            "!\nThanks for registering...\nVerify your details below:\nGender: " +
+            formData.gender +
+            "\nParent / Husband's Name: " +
+            formData.parentName +
+            "\nDOB: " +
+            formData.dob +
+            "\nAge: " +
+            formData.age +
+            "\nAddress: " +
+            formData.address +
+            "\nAdmission Date: " +
+            formData.admissionDate
+        );
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await sendOtp(formData.phoneNumber);
+            const msg = await getSMSMsg();
+            await sendOtp(formData.phoneNumber, msg);
             alert("OTP sent to the patient's phone number.");
             setShowOtpDialog(true);
         } catch (error) {
